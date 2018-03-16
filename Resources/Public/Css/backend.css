@@ -1,0 +1,112 @@
+/**
+ * Add left-padding to docbody backend
+ */
+#typo3-inner-docbody.m_pdc.m_backend {
+    padding: 10px;
+}
+
+/**
+ * Alternating color for odd rows to improve readability
+ */
+.odd {
+/*    background: #f8f8f8;*/
+    background: #dadada;
+}
+
+/**
+ * Row formatting, adding separator for readability.
+ */
+.product-status-row .add-separator {
+    border-bottom: 1px solid #585858;
+}
+
+/**
+ * Product table background color
+ */
+.product-table {
+    border-spacing: 0px;
+    border: 1px solid #585858;
+}
+
+/**
+ * Adds padding to backend list table
+ */
+table td {
+    padding: 5px;
+}
+
+/**
+ * icon template
+ */
+.icon {
+    width: 16px;
+    height: 15px;
+    padding: 0;
+    margin: 2px;
+    display: inline-block;
+    background: url('../../../../../../typo3/sysext/t3skin/images/sprites/t3skin.png');
+}
+
+/**
+ * Product name
+ */
+.name {
+    font-weight: bolder;
+}
+
+/**
+ * Edit-icon spacing
+ */
+.name .icon-wrap {
+    padding-left: 5px;
+}
+
+/**
+ * Product name surrounding p left float for edit-icon
+ */
+.name p {
+    float: left;
+}
+
+/**
+ * Warning icon
+ */
+.icon.icon-warning {
+    background-position: 70px 140px;
+}
+
+/**
+ * Ok icon
+ */
+.icon.icon-ok {
+    background-position: 88px 140px;
+}
+
+/**
+ * Error icon
+ */
+.icon.icon-error {
+    background-position: 142px 140px;
+
+}
+
+/**
+ * Pencil-edit icon
+ */
+.icon.icon-edit {
+    background-position: 124px 0px;
+}
+
+/**
+ * Page-view icon
+ */
+.icon.icon-view {
+    background-position: 268px 320px;
+}
+
+/**
+ * Icon add
+ */
+.icon.icon-add {
+    background-position: 250px 320px;
+}

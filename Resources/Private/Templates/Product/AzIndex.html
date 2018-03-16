@@ -1,0 +1,53 @@
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+
+<div class="pdc-az-index-container" id="pdc-az-index-container">
+	<div class="pdc-az-index-header-container" id="pdc-az-index-header-container">
+		<div class="pdc-content pdc-product pdc-click-letter">
+			<f:translate key="product_azindex_choose_letter">Klik een letter aan om een overzicht te krijgen van producten die beginnen met die letter:</f:translate>
+		</div>
+		<ul class="pdc-az-index pdc-product pdc-letters pdc-az-content-list">
+			<f:for each="{letters}" as="letter">
+				<f:if condition="{letter.active}">
+					<f:then>
+						<li class="pdc-letter pdc-product pdc-letter-active">
+							<f:link.action class="pdc-link-letter pdc-link pdc-letter-active" pageUid="{settings.pages.productAZIndexPage}" arguments="{letter : letter.firstLetter}" section="pdc-az-index-container"><lib:case type="upper">{letter.firstLetter}</lib:case></f:link.action>
+						</li>
+					</f:then>
+					<f:else>
+						<li class="pdc-letter pdc-product{f:if(condition: '{letter.count} == 0', then: ' pdc-letter-noProducts', else: '')}">
+							<f:link.action class="pdc-link-letter pdc-link" pageUid="{settings.pages.productAZIndexPage}" arguments="{letter : letter.firstLetter}" section="pdc-az-index-container"><lib:case type="upper">{letter.firstLetter}</lib:case></f:link.action>
+						</li>
+					</f:else>
+				</f:if>
+			</f:for>
+		</ul>
+	</div>
+
+	<div class="pdc-az-index-results-container" id="pdc-az-index-results-container">
+		<f:if condition="{f:count(subject: '{products}')}">
+			<f:then>
+				<ul class="pdc-az-index-results pdc-product">
+					<f:for each="{products}" as="product">
+						<li>
+							<f:link.action class="pdc-link-product pdc-link" pageUid="{settings.pages.productDetailPage}" arguments="{product: product}"><pdc:faqContent><f:format.html>{product.name}</f:format.html></pdc:faqContent></f:link.action>
+							<f:if condition="{product.owmsMantleAbstract}">
+								<span class="pdc-content pdc-product-abstract">{product.owmsMantleAbstract}...</span>
+							</f:if>
+						</li>
+					</f:for>
+				</ul>
+			</f:then>
+			<f:else>
+				<f:if condition="{selectedLetter}">
+					<div class="pdc-az-index-results pdc-product pdc-content-not-found">
+						<f:translate key="product_azindex_no_products_found">Er zijn geen producten gevonden.</f:translate>
+					</div>
+				</f:if>
+			</f:else>
+		</f:if>
+	</div>
+</div>
+
+
+

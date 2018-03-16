@@ -1,0 +1,1278 @@
+2018-02-08 4.2.10 Tania Morales <extensions@netcreators.nl>
+	* Added plugin to show product info by scmeta id
+		Note: Requested by maastricht to redirect from DigId login
+
+2017-12-12 4.2.9 Tania Morales <extensions@netcreators.nl>
+	* Added show_dynamic_content checkbox field to products.
+		Note: Requested by maastricht to show custom content element on detail page.
+		Note: Run DB compare.
+
+2017-07-18 4.2.8 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fixed RTE configuration for generic product text fields made editable via EXTCONF.
+
+2017-03-28 4.2.7 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Changed ProductController::detailAction from cachable to nonCachable.
+	* Adjusted feature for use as nonCachable action: controllers.Product.title.useRecordAsPageTitle.
+
+2017-03-14 4.2.6 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added Service\Backend\Form\FormDataProvider\DatabaseRowModifier to replace former getMainFieldsClass hook.
+		@see https://docs.typo3.org/typo3cms/extensions/core/7.6/Changelog/7.5/Breaking-69568-FormEngine.html
+
+		The new DatabaseRowModified is registered to be ordered before
+			\TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowDefaultValues
+		@see https://docs.typo3.org/typo3cms/extensions/core/7.6/Changelog/7.5/Feature-69568-FormEngineDataProcessing.html
+
+	* Added missing definition of Domain\Model\ReferenceLink::SUBTYPE_CTA_BUTTON.
+	* Migrated relation record AddController (overriding the core's AddController to pass on type and subType parameters)
+		to TYPO3 7.6 LTS.
+	* Unified use of ReferenceLink type and subtype in TCA relation fields' foreign_table_where.
+	* Unified use of type and subtype parameters for ReferenceLink 'add' wizards to preselect the correct options.
+	* Removed obsolete 'dontSaveMe' and 'dontSaveMe_alert' fields and corresponding
+	 	ImportedFrequentlyAskedQuestionReadonlyFormEval, which had been disabled since Antwoord(c) ceased existing.
+	* Fixed ReferenceLink subtype select TCA field definition: Default value changed from '' to '0', as defined as
+	 	default value in ext_tables.sql.
+
+
+2017-03-10 4.2.5 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Increased DB FAQ owms_core_language field from VARCHAR(2) to VARCHAR(32), to allow OWMS valid language codes:
+		See: EXT:ncgov_pdc/ext_tables-migration-v3.2.1.sql
+		See: http://standaarden.overheid.nl/owms/3.5/doc/eigenschappen/dcterms.language
+		See: http://standaarden.overheid.nl/owms/3.5/doc/syntax-codeerschemas/dcterms.rfc4646
+
+	Please run this migration script! EXT:ncgov_pdc/ext_tables-migration-v4.2.5.sql
+
+2017-03-10 4.2.4 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Increased Log message frame size and wizard popup window sizes.
+
+2017-03-10 4.2.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Switched from TCA script wizards to new module wizards.
+	* Changed TCA iconfile definition to using EXT:nc_extbase_lib/ prefix rather than absolute path.
+	* Moved from string-defined class names to ::class for all but TCA.
+	* Simplified most cases of Fully Qualified Class Names (not in Exception classes - that gets too confusing :)).
+
+2017-03-10 4.2.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Removed pdc:form (\Netcreators\NcgovPdc\ViewHelpers\FormViewHelper/)
+	* Removed usage of pdc:form by f:form (\TYPO3\CMS\Fluid\ViewHelpers\FormViewHelper)
+		Note: Check changelog "2010-11-02 1.2.0 Frans van der Veen". pdc:form was added for W3 validity & comliance.
+				This should not anymore be necessary to date.
+	* Fixed Samenwerkende Catalogi feed output: Broken XML prologue.
+	* Fixed Samenwerkende Catalogi feed rendering: invalid leading backslash for FQN of UniformProductNameListReader.
+
+2017-03-03 4.2.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Reformatted for PSR-2.
+	* Configured default view.templateRootPaths.0.
+	* Configured default view.partialRootPaths.0.
+	* Configured default view.layoutRootPaths.0.
+
+	Use templateRootPaths.1 for fileadmin/site/...
+
+2016-09-16 4.2.0 Tania Morales <extensions@netcreators.nl>
+	* Initial update for 7.6 compatibility
+
+2016-09-16 4.1.14 Tania Morales <extensions@netcreators.nl>
+	* Added custom_label field to products. Requested by maastricht to show custom button labels on detail page.
+		Run DB compare.
+
+2016-06-23 4.1.13 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: Declared dependency of tt_address to ensure correct ext_tables loading order and TCA
+		DataMap/ColumnMap creation.
+
+		(ncgov_pdc used to be included before tt_address, which caused that ncgov_pdc/ext_tables.php could not
+		add columns to the tt_address table. It is not yet possible to use
+		ncgov_pdc/Configuration/TCA/Overrides/tt_address.php because tt_address first needs to migrate
+		to the 'new style' TCA declaration.)
+
+2016-01-27 4.1.12 Leonie Philine Bitto <leonie@netcreators.nl>
+	* TCA Product.weight is no longer required. Defaults to 0 in the database.
+	* Product search results now show product.shortDescription if product.owmsMantleAbstract is not available.
+		(For products manually created in the TYPO3 BE.)
+	* A-Z Index now links letters to section '#pdc-az-index-container' for cases where the A-Z Index plugin is not placed at the top of the page.
+
+2016-01-26 4.1.11 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: Refactored Product::azIndex(), so now the 'noProducts' class works again.
+	* Added various FlexForm options where previously TS (and conditions) would have needed to be used.
+		- Audience for Product::azIndex()
+		- Display (yes/no) for FAQ::find() search form parameter checkboxes:
+		 	- match exact phrase,
+		 	- include private results,
+		 	- include business results,
+		 	- include remote products
+	* Set default TS value: settings.controllers.FrequentlyAskedQuestion.actions.find.showSearchBox = 1 (old value: unset; defaults to FALSE)
+	* Unified Fluid template namespace aliases from 'pdc' and 'ncgovPdc' to 'pdc' and from 'ncel' and 'ncExtbaseLib' to 'lib'.
+
+
+2016-01-26 4.1.10 Leonie Philine Bitto <leonie@netcreators.nl>
+	* BREAKING (in very rare cases): Fixed spelling of configuration option controllers.FrequentlyAskedQuestion.actions.find.showSingleFrequentlyAskedQuestion
+		Used to be showSingleFrequenlyAskedQuestion (Frequenly + t = Frequently)
+
+		PLEASE UPDATE YOUR TYPOSCRIPT AND FLEXFORM CONFIGURATION!
+
+2015-09-24 4.1.9 Leonie Philine Bitto <leonie@netcreators.nl>
+	* vac:contactinfo/vac:instantie is now hidden by default. In SDU VACs, this is supposed to be a private field.
+		Other Antwoord providers might handle this differently - in this case please uncomment the
+		"frequentlyAskedQuestion.contactAddresses" section in Resources/Private/Templates/FrequentlyAskedQuestion/Detail.html.
+
+2015-07-23 4.1.8 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Removed all code related to \Netcreators\NcgovPdc\ViewHelpers\ContactInstance\IsPublicContactInstanceViewHelper.
+
+2015-07-08 4.1.7 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix for
+		"Fatal error: Nesting level too deep - recursive dependency? in ncgov_pdc/Classes/Services/Registration/Manager.php on line 294"
+		@see http://www.richardlord.net/blog/php-nesting-level-too-deep-recursive-dependency
+
+2015-04-28 4.1.6 Arek van Schaijk <arek@netcreators.nl>
+	* FrequentlyAskedQuestionController->detail() finished the '404' handler which was commented as TODO
+
+2015-04-16 4.1.5 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Increasing tt_address.phone field length: Now working again, with corresponding code re-added to ext_tables.php.
+		The code in Configuration/TCA/Overrides/tt_address.php will not work as long as EXT:tt_address is including their
+		TCA in ext_tables.php instead of via Configuration/TCA/.
+
+2015-04-16 4.1.4 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Using new (nc_extbase_lib v.1.8) parameter $identifierField of \Netcreators\NcExtbaseLib\Service\Object\Synchronization\AbstractObjectSynchronizer::getOrLoadCachedById().
+		Among other instances, the method is used to find existing FAQ and Product records in the various PDC synchronizers.
+
+		SDU provides a separate, *numeric* ScmetaProductId, and an *URI* OwmsCoreIdentifier. SDU relates FAQs to Products via the *numeric* ScmetaProductId.
+		Opus+ on the other hand uses the OwmsCoreIdentifier for such relations. The Opus+ OwmsCoreIdentifier is a *GUID*.
+		Aplus also provides a separate ScmetaProductId and OwmsCoreIdentifier.
+
+		For SDU Product->FAQ relations, getOrLoadCachedById() must be called with $identifierField='ScmetaProductId'.
+
+		ncgov_pdc v4.1.4 depends on nc_extbase_lib v1.1.8 or higher!
+
+2015-04-15 4.1.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added all PDC tabs functionality to Resources/Public/Js/pdc-tabs.js, including pre-selection via #hash or /tab/{tabname} (realURL).
+		This way, fileadmin/site/*/script/jquery_functions.js can be free of any PDC tab code.
+
+2015-03-09 4.1.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: Set the correct IntermediateObject::$type
+		in \Netcreators\NcgovPdc\Service\File\Record\Converter\XmlFaqConverter::createIntermediatesFromNode().
+
+2015-03-09 4.1.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* \Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::$owmsMantleAvailableStart and \Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::$owmsMantleAvailableEnd
+		were party treated as integer (legacy) and partly as \DateTime (new style). This caused validation (and other) issues.
+		$raw parameter of \Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::getOwmsMantleAvailableStart() and
+		\Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::getOwmsMantleAvailableEnd() was removed.
+
+2015-03-02 4.1.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Migration to nc_extbase_lib v1.1.x
+	* Namespacing
+	* Using new-style (cacheable) TCA and TCA Overrides.
+	* Added FAQ Synchronizer delete count
+	* Renamed EXTCONF key hideBackendModule: Do not use a positive value to indicate a negated option. Now called 'enableProductMaintenanceModule'.
+	* Ported Change from http://hg.netcreators.com:5000/ncgov_pdc/changeset/2b2173daf8ea8f3e463d85ef8615e33fdc0f2df3:
+		Adjusted language label for AdvancedTheme Type from PdcX to Pdc, since implementation of the domain model was moved into the core extension.
+	* Ported Change from ncgov_pdc v3.2.1 (http://hg.netcreators.com:5000/ncgov_pdc/changeset/262df752ba731ef2caf06c547ff6d80f173dd1ba):
+		Product language labels changed from e.g. "nl", "en" to "nl-NL", "en-GB"
+	* Ported Change from ncgov_pdc v3.9.0:
+		(1) NOTE: The method \Netcreators\NcgovPdc\Service\Object\Synchronization\FaqObjectSynchronizer::setLinkData() was introduced in r457:52f24b829d3a,
+			existed through several changes and merges until r470:60810445241d, and was removed by a faulty merge (wrong
+			merge direction?) in r475:c6086822d693!
+			If more things went missing, then check r470:c6086822d693!
+		(2) [DB UPDATE] Added feature:
+			Now importing FAQ Antwoord Adres and Onderwater Antwoord Adres & displaying in FAQ detail view. (Gemeente Maastricht)
+	* Ported Fix from ncgov_pdc v3.9.1: FrequentlyAskedQuestionController::postProcessAnswers() now consistently takes array as 4th argument.
+		Previously, it had been QueryResultInterface in some cases, which caused glitches in certain situations.
+	* Ported Fix from ncgov_pdc v3.9.2: Due to two separate bugs, Related FAQs were no longer shown on the FAQ detail page since v3.8.7.
+	* Removed FrequentlyAskedQuestionController::synchronizeAction().
+	* Added FrequentlyAskedQuestionSynchronizerCommandController.
+	* Added FrequentlyAskedQuestionSynchronizerModuleController.
+	* Fix: Property annotations for Domain\Model\ReferenceLink::$referenceProduct and ...::$referenceLink now use FQN.
+	* Fix: Typo XmlFaqConverter::$ex[c]ludedItems.
+	* Fixed accessor \Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::getReferenceFrequentlyAskedQuestions():
+		No longer initializing lazy object storage before validation, causing recursive validation of possibly thousands of FAQs.
+		Previous method now called \Netcreators\NcgovPdc\Domain\Model\FrequentlyAskedQuestion::getReferenceFrequentlyAskedQuestionsFiltered().
+		(Unsure about the necessity of this method... @see \Netcreators\NcgovPdc\Controller\FrequentlyAskedQuestionController::assignReferenceFrequentlyAskedQuestions())
+	* Fix: In Fluid Templates f:link.controller, replaced controller="Theme" by controller="TioTheme", changed since introduction of Netcreators\NcgovPdcx\Controller\AdvancedThemeController.
+
+
+
+2015-01-28 4.0.12 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: Manually created Products no longer break the XML publish process. (We could make the owms_core_modified field required, but this makes no sense. Instead, the automagic tstamp column is used.)
+	* Removed dirty never-to-be-touched-again CSV importer.
+	* Merged Classes/Services/ into Classes/Service/.
+
+2015-01-28 4.0.11 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added constants, property, getter and setter for ReferenceLink::subtype. Subtype should be set during sync, not (only) via EXT:ncgov_pdc/Resources/Private/Scripts/SetSubTypes.php:user_setReferenceLinkSubtypes->setSubtypesFromFieldFromWhichLinkedFromPdc!
+	  On a side note, it would have been more elegant to use MM_match_fields and MM_insert_fields.
+
+2015-01-28 4.0.10 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Re-implemented \Tx_NcgovPdc_Domain_Search_Parameter::toXml() for use in \Tx_NcgovPdc_Domain_Model_RegistrationAction::setSearchParameter().
+		NOTE:
+			Is this cargo cult?? [@Frans?]
+			\Tx_NcgovPdc_Domain_Model_RegistrationAction::getSearchParameter() throws a \Tx_NcgovPdc_Exception_NotImplemented!
+			Is there any use for this entire mechanism?
+
+2014-11-14 4.0.9 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix in BaseController: Use \TYPO3\CMS\Extbase\Domain\Model\FrontendUser::getUsergroup() instead of the non-existent getUsergroups().
+
+2014-11-14 4.0.8 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix in various templates: Replace f:form.textbox by f:form.textfield.
+
+2014-10-24 4.0.7 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fixed Publish XML: in TYPO3 6, UriBuilder needs Web Request to be set manually.
+
+2014-10-22 4.0.6 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Replaced remaining t3lib_BEfunc with \TYPO3\CMS\Backend\Utility\BackendUtility.
+
+2014-10-22 4.0.5 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fixed parameter type annotation in Classes/Domain/Model/ReferenceLink.php.
+
+2014-10-19 4.0.4 Frans van der Veen <extensions@netcreators.nl>
+	* Removed old xclass and replaced it through the new object registry (Hook/AddController)
+
+2014-10-15 4.0.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* pdc-tabs.js: Increased height calculation of .ncel-tabcontrol-contents, adding a 30 pixel padding, to avoid scrollbars.
+
+2014-09-30 4.0.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Template fix: Added extensionName and pluginName to f:link.action in Resources/Private/Templates/Product/ShowRelatedAdvancedThemesForProduct.html
+
+2014-09-30 4.0.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* No longer using UriBuilder as property, as the referenced ContentObjectRenderer does not validate when referencing Domain Model is used as Controller Action method parameter.
+	* Added new view: Show related advanced themes for given Product.
+	* Changed Product::$crdate & $tstamp from \DateTime to integer, due to validation errors.
+	* Fix in AdvancedTheme::findByParentOrderByTitle(): Enforcing comparison with 0 instead of NULL on parent reference field. Is this a configuration error or an extbase bug?
+	* Fixed several annotations.
+	* Fixed several global namespace indications on Exception classes.
+	* Added TS "plugin.tx_ncgovpdc.mvc.callDefaultActionIfActionCantBeResolved = 1" to allow for e.g. a 'related themes for product' plugin on the same page as the 'detail' plugin.
+
+2014-09-27 4.0.0 Frans van der Veen <extensions@netcreators.com>
+	* More TYPO3 6.2.4 compatibility
+	* Fixed SC search
+	* Fixed search
+	* Renamed as many legacy classes as possible
+	* Added product domain model test
+	* Added faq domain model test
+
+2014-09-21 4.0.0 Frans van der Veen <extensions@netcreators.com>
+	* BREAKING CHANGE: product setReferenceLaw -> setReferenceLaws & setReferenceLocalLaw -> setReferenceLocalLaws
+	* Added link groups
+	* Removed additional data provider stuff, which is handled by the link groups now
+	* TYPO3 6.2.4 compatibility
+
+2014-07-31 3.8.7 Leonie Philine Bitto <leonie@netcreators.nl>
+	* ReferenceLinks now store Products and FrequentlyAskedQuestions as references instead of as UIDs.
+	* The FaqSynchronizer calls Repository::update() after updating objects.
+	* ReferenceLinks are updated with all available data, also if not newly created.
+
+2014-07-30 3.8.6 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Adjusted nc_extbase_lib minimum version dependency. (nc_extbase_lib v0.2.11 for TYPO3 4.7.)
+
+2014-07-21 3.8.5 Frans van der Veen <extensions@netcreators.com>
+	* Added link groups to product
+	* Added link groups
+	* Removed additional data provider stuff, which is handled by the link groups now
+
+2014-07-14 3.8.4 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: APlus and SDU FAQ feeds are incompatible. The FAQ synchronizer now properly imports APlus answers and authorized answers again.
+
+2014-07-14 3.8.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Marked Tx_NcgovPdc_Service_Web_File_Download as deprecated. Please use Tx_NcExtbaseLib_Service_Web_File_Download instead.
+	* Marked Tx_NcgovPdc_Services_Web_Rest_Client as deprecated. Pleas use Tx_NcExtbaseLib_Service_Web_Rest_Client instead.
+	* Tx_NcgovPdc_Service_MultiPageProcess_FaqSynchronizer uses Tx_NcExtbaseLib_Service_Web_File_RestRequestDownload for FAQ feed download, in order to be able to provide credentials as POST fields. (Needs testing with SDU & Impactive!)
+	* Depends on nc_extbase_lib v0.2.8.
+
+2014-06-17 3.8.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added span wrap to Top viewed product/faq: view count. This way, the count can easily be hidden via CSS.
+
+2014-06-17 3.8.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Updated extension icon
+	* Fixed default value and documentation of AdvancedTheme::setParent(): Now using NULL instead of -1 for root level.
+		Note: Default NULL value is a means to allow NULL values when using type hinting.
+			  @see http://php.net/manual/en/language.oop5.typehinting.php "allowing NULL value".
+
+2014-06-17 3.8.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Merged Advanced Themes (formerly in PDC X) into the extension.
+	* Fixed bug: VACs were not shown in cases where destinations were not used at all (APlus).
+	* Now using Object Manager and Dependency Injection throughout.
+	* Clarified use of raw query results (array) and QueryResultInterfaces.
+	* Removed code dealing with pre-4.5 TYPO3 versions.
+	* Carefully migrated a number of classes in order to bring them back to being somewhat maintainable.
+	* SC 4.0 export now works also for APlus customers.
+	* Introduced Base Model class to provide Object Manager in Domain Models already on Extbase 1.3.
+	* Pages Model is now called Page Model.
+	* Pages Repository is now called Page Repository.
+	* Classes and tokens related to TiO Themes have been renamed from Theme* to TioTheme*, due to the (re-)introduction of AdvancedThemes.
+	* Lots of documentation and PHPDOC annotation fixes.
+
+2014-06-11 3.7.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Increased maximum length of database field tt_address.phone.
+
+2014-06-05 3.7.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Changed Contact Address label "Fon" to "Tel".
+
+2014-06-04 3.7.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Now displaying only public contact instances.
+		--> Internal contact instances are determined by matching contact data against rules defined at:
+			settings.viewHelpers.contactInstance.isPublicContactInstance.internalContactInstanceRules
+	  Please note that currently only a very limited rule set is implemented.
+	  (See Configuration/TypoScript/setup.txt and Classes/ViewHelpers/ContactInstance/IsPublicContactInstanceViewHelper.php.)
+
+2014-05-01 3.6.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Now importing VAC Kanaal contact addresses.
+	* Now displaying VAC Kanaal contact addresses and Product contact addresses (if imported, as by ncgov_pdc_sdu).
+
+2014-05-01 3.5.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Updated templates for nc_extbase_lib v0.2.3: "* changed replaceContent viewhelper. Please update your templates (viewHelperParameter should be wrapOrReplace instead of wrap)"
+
+2014-05-01 3.5.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fixed nc_extbase_lib dependency: Minimum v0.2.5 for UrlEncodeViewHelper used in ncgov_pdc 3.2.0+ and higher.
+
+2014-04-28 3.5.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Minor PHPDoc code documentation fixes.
+
+2014-04-28 3.5.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: The Frequently Asked Question Detail View no longer shows references to Frequently Asked Questions out of Scope (destination, audience, start and end dates, ...)
+	* Increased PHP minimum version to 5.3.0
+
+2014-04-09 3.4.6 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: Taking DateTimeZones into consideration when converting between UNIX timestamps, DateTimes and date string representations.
+
+2014-03-03 3.4.5 Frans van der Veen <extensions@netcreators.nl>
+	* minor SC4.0 fixes
+	* Merged loose heads hanging around in hg
+	* Added changes to ChangeLog
+	* Increased version number to reflect the change
+
+2014-01-29 3.4.4 Tania Morales <tania@netcreators.nl>
+	* Replaced frequentlyaskedquestionschannel TCA RTE implementation for RTE wizard
+	* Added changes to ChangeLog
+	* Increased version number to reflect the change
+
+2014-01-16 3.4.3-nctania Tania Morales <tania@netcreators.nl>
+	* Added option to product detail view to show pageNotFound_handling content when sending 404 header
+	* Added changes to ChangeLog
+	* Increased version number to reflect change
+
+2014-02-12 3.4.3-ncfrans Frans van der Veen <extensions@netcreators.nl>
+	* added backend view module for maintaining products
+	* added PageTSConfig option tx_ncgovpdc.frontendViewPage = <url to path of product page FE> - for use in module
+	* added PageTSConfig option tx_ncgovpdc.useRealUrl = boolean, if the FE uses realurl, will use the alias field
+	* added PageTSConfig option tx_ncgovpdc.newTipPid = <pid> where new tips will be stored
+	* Added changes to ChangeLog
+	* Increased version number to reflect change
+
+2014-01-10 3.4.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Introduced new template variables for ProductDetail(.sdu/.tabless).html Partial: {showRelatedProducts}, {showRelatedFAQs}, {showRelatedThemes}.
+	  This makes it easier to exclude relation links when using Product->detailForPreconfiguredProduct on subsites.
+
+2014-01-10 3.4.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: FAQ Destination field was not shown in FlexForm for Product->detailForPreconfiguredProduct.
+
+2014-01-10 3.4.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Renamed Tx_NcgovPdc_Utility_ThemeClassificationReader::getThemeNamesByIdentifiers to getThemesByIdentifiers, as it returns theme structs (associative arrays), not plain string theme names.
+	* Made the entire extension translatable for Gemeente Maastricht.
+	* Added English translation of extension strings for Gemeente Maastricht.
+	* Prepared English translation of TiO themes for Gemeente Maastricht. Translation will be delivered by the customer (expected for v3.4.2).
+	* Fixed various incorrect (copied&pasted) existing translation labels.
+	* Fixed various small template HTML errors.
+	* Product/FAQ search: Moved FAQ results down. Now, FAQ results are found below Product results.
+	* Product Detail: {combinedPropertiesAvailable} is now called {combinedProperties}, since it is an array of combined properties.
+	  --> Update your fileadmin templates!
+	  --> Update your TypoScript setup! (settings.controllers.Product.combinedPropertiesAvailable is now called settings.controllers.Product.combinedProperties!)
+	* Product Detail: Removed unnecessary requestOnline template variables. This is now done by the Product model as {product.requestOnlineAvailable}, {product.requestOnlineWithDigidAvailable}, {product.scmetaRequestOnlineUrl} and {product.requestOnlineWithSingleSignOnAvailable}.
+	* Refactored \Tx_NcgovPdc_Controller_ProductController::detailAction() for easy code re-use in \Tx_NcgovPdc_Controller_ProductController::detailForPreconfiguredProductAction().
+	* Product Detail: Removed "conditionShowTabConditions", since this is supposed to be done using "combined properties".
+	* Some refactoring to Tx_NcgovPdc_Domain_Service_FrequentlyAskedQuestion for readability. (Immediate return.)
+	* Now using Tx_NcExtbaseLib_Domain_Repository_LogRepository instead of Tx_NcgovPdc_Domain_Repository_LogRepository throughout the extension.
+	* Removed obsolete Tx_NcExtbaseLib_Domain_Repository_LogRepository, Tx_NcExtbaseLib_Domain_Model_Log and Tx_NcExtbaseLib_Domain_Model_LogFactory.
+	* Product Detail: Now rendered via Partial.
+	  --> Update your fileadmin templates!
+
+2014-01-07 3.3.3 Frans van der Veen <extensions@netcreators.nl>
+	* Disabled PageTSConfig option (tx_ncgovpdc.ignorePidRestrictionForRelations)
+	* Added PageTSConfig option (tx_ncgovpdc.columns.<fieldname>.foreign_table_where_pid) where 'current' a single pid or a csv of pids can be supplied so each relation can be configured separately
+	* Added PageTSConfig option (tx_ncgovpdc.columns.<fieldname>.wizards_add_pid) where 'current' a single pid can be supplied so each relations 'new' storage folder can be configured
+	* Refactored tips to contain a status for moderation
+
+2014-01-07 3.3.2 Frans van der Veen <extensions@netcreators.nl>
+	* Fixed definition of fieldnames in ext_tables.sql
+	* Added PageTSConfig option (tx_ncgovpdc.ignorePidRestrictionForRelations) to disable pid restriction for mm relations
+	* Added subtype for referencelinks so you can distinguish between laws, local laws, forms, internal and external references
+	* Added PageTSConfig option to enable filtering by subtype for referencelinks (tx_ncgovpdc.setTypeRestrictionForReferences). This will make it more usable for editors.
+	* Removed one-shot-import by page module (it's never used anyway)
+	* Removed PageTSConfig for 'changeProductLabels' since that can be achieved through normal TCEFORM.tx_ncgovpdc_domain_model_product.field.label = New label
+
+2013-12-19 3.3.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Search: The search is now performed on the page with pid={settings.pages.searchPage}, regardless of where the search form is placed.
+	* Defined default ordering for products: Ordered by name, ascending.
+	* FaqContentViewHelper: Removed double line feed, which resulted in <p>&nbsp;</p> through lib.parseFunc_RTE_pdc.
+
+2013-12-19 3.2.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* A-Z Product Index: "Er zijn geen producten gevonden." was shown even if no letter had been selected.
+
+2013-12-19 3.2.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Product/FAQ Search: Added TypoScript configuration to show or hide search options (match exact phrase, include private results, include business results, include remote products)
+	* Product/FAQ Search: Added TypoScript configuration to set default values for these search options. The default values are applied regardless of the above setting (via checkbox or via hidden form field).
+	* Product/FAQ Search: Now returning empty search result set for local products if neither private nor business results were requested. This way now a "remote only" search form can be realized.
+	* Product/FAQ Search: Renamed Tx_NcgovPdc_Domain_Search_Parameter::findAll to Tx_NcgovPdc_Domain_Search_Parameter::matchExactPhrase. This also fixes a bug, where findAllWords and findAll was used inconsistently.
+	  NOTE: #pdc-input-findallwords(-label) is now called #pdc-input-matchExactPhrase(-label)! Update stylesheets where applicable.
+	* A-Z Product Index: List items for letters with no products now have class "pdc-letter-noProducts" assigned and are rendered in grey color and default cursor by default.
+	* Fixed \Tx_NcgovPdc_Configuration_Manager::traverseExists, which would in most case return FALSE even though the key actually existed.
+	* Small code fixes.
+	* Added TypoScript configuration for search options to the manual.
+
+2013-12-10 3.1.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Small product search form adjustments for easier styling.
+
+2013-12-07 3.1.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added BaseRepository method to find objects by values of multiple CSV fields.
+	* Added ProductRepository method to find products by TiO themes and audiences.
+
+2013-11-26 3.0.7 Tania Morales <tania@netcreators.nl>
+	* Added redirection functionality to notfound viewhelper
+	* Added changes to ChangeLog
+	* Increased version number to reflect change
+
+2013-11-20 3.0.6 Leonie Philine Bitto <leonie@netcreators.nl>
+	* FAQ Synchronizer now also decodes single quote HTML entities.
+
+2013-11-20 3.0.5 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: \Tx_NcgovPdc_Utility_ThemeClassificationReader::getThemeNamesByIdentifiers() no longer returns null values when mapping from invalid theme IDs.
+
+2013-11-20 3.0.4 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: SC 4.0 XML feed is now applying htmlspecialchars($string, ENT_XML1) on namespaces, attributes and tag content which is not placed within <![CDATA[ ]]>
+
+2013-11-20 3.0.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fix: \Tx_NcgovPdc_Domain_Repository_FrequentlyAskedQuestionRepository::countImportedWithLinksToProductsLimited() no longer causes out-of-memory errors while reconstituting 2032 FAQ domain models from the database - just to count them.
+
+2013-11-20 3.0.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Some FAQ synchronizer cleanup.
+
+2013-11-19 3.0.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Fixed dysfunctional \Tx_NcgovPdc_Domain_Repository_FrequentlyAskedQuestionRepository::countImportedWithLinksToProductsLimited().
+
+2013-11-19 3.0.0 Leonie Philine Bitto <leonie@netcreators.nl>
+	* VIND4 -> VIND3 migration progress
+	* Changing major version number to separate VIND4 from VIND3 version.
+
+2013-10-31 2.0.7 Tania Morales <tania@netcreators.nl>
+	* Added viewhelper to add 404 header
+	* Added changes to ChangeLog
+	* Increased version number to reflect change
+
+2013-10-09 2.0.6 Frans van der Veen <frans@netcreators.nl>
+	* Added kluwer template
+	* Removed check for if content elements (related to search) are set
+	* Added changes to ChangeLog
+	* Increased version number to reflect change
+
+2013-07-27 2.0.5 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added configuration settings.pages.productAZIndexPage to allow A-Z Product index letters to be opened on separate page.
+	* Added changes to ChangeLog.
+	* Increased bugfix version number to reflect change
+
+2013-07-27 2.0.4 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Added dropping of legacy themes column from products table.
+	* Added changes to ChangeLog.
+	* Increased bugfix version number to reflect change
+
+2013-07-27 2.0.3 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Removed remaining code dealing with legacy VIND themes and SC 2.1 Onderwerp taxonomie themes.
+	* Added changes to ChangeLog.
+	* Increased bugfix version number to reflect change
+
+2013-07-26 2.0.2 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Renamed owms40-migration.sql to clearer ext_tables_migration-v2.0.0.sql.
+	* Added truncation of statistics table to migration SQL script.
+	* Added change to ChangeLog.
+	* Updated bugfix version number to reflect change.
+
+2013-07-26 2.0.1 Leonie Philine Bitto <leonie@netcreators.nl>
+	* Tx_NcgovPdc_Domain_Repository_BaseRepository::findByValueInCSVField
+	  would not match if $value was the one and only value within $field.
+	* Added change to ChangeLog.
+	* Updated bugfix version number to reflect change.
+
+2013-07-26 2.0.0 Leonie Philine Bitto <leonie@netcreators.nl>
+
+NOTE:
+	- Use EXT:ncgov_pdc/owms40-migration.sql to migrate existing data.
+	- Empty statistics table.
+	- VIND themes and SC 2.1 Onderwerp taxonomie no longer exist. Only TiO themes are used now. Themes cannot be migrated!
+	- As work has been done ONLY for SDU/VIND customers for now, only Product/Detail.sdu.html has been properly adjusted. All other Product/Detail*.html templates would still need to be adjusted as needed in a future version.
+	- If no VACs are shown where you expect them to be shown, make sure to select the correct destination(s) "Bestemming" in the flexform.
+
+	* Replaced Samenwerkende Catalogi 2.1 Product Index XML feed by Samenwerkende Catalogi 4.0 Product Index XML feed.
+	* Replaced Samenwerkende Catalogi 2.1 Remote Product Search by Samenwerkende Catalogi 4.0 Remote Product Search.
+	* Various fixes.
+	* Removed legacy code.
+	* Added changes to ChangeLog.
+	* Updated major version number to reflect compatibility-breaking changes.
+
+2013-05-13 1.8.5 Frans van der Veen <extensions@netcreators.com>
+	* added added functionality for additional dataproviders (to be used from view)
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2013-03-21 1.8.4 Jordi Bakker <jordi@netcreators.nl>
+	* Changed XML file regarding the VAC - Answer of the question are in the field vac:antwoordProductVeld
+	  by setting import.faq.useXMLAntwoordProductVeld = true you read the field
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2013-03-11 1.8.3 Jordi Bakker <jordi@netcreators.nl>
+	* added functionality for Maastricht to tab conditions to show it when one of the fields FullRequiredForApplication or FullTerms are filled.
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2013-01-23 1.8.2 Frans van der Veen <extensions@netcreators.com>
+	* added functionality to make tabs appear with different titles depending on the content (ProductContains viewhelper)
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2013-01-09 1.8.1 Frans van der Veen <extensions@netcreators.com>
+	* fixed problem with downloading SDU faq content, added configuration option
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-12-05 1.8.0 Frans van der Veen <extensions@netcreators.com>
+	* fixed problem with newer extbase versions not being able to handle repositories correctly when created with makeInstance
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-11-27 1.7.9 Frans van der Veen <extensions@netcreators.com>
+	* fixed bug causing referencelinks to other faqs to be incorrectly shown
+	* changed template
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-11-20 1.7.8 Frans van der Veen <extensions@netcreators.com>
+	* added interne contactgegevens to opus default template
+	* added redirect back to default products page
+	* added default template for ldn
+	* removed default user (group) restriction for adding tips
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-11-20 1.7.7 Frans van der Veen <extensions@netcreators.com>
+	* added missing sql field
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-11-14 1.7.6 Frans van der Veen <extensions@netcreators.com>
+	* fixed problem with TYPO3 4.6.14 and makeInstance for repositories (see http://forge.typo3.org/issues/42928) :(
+	* changed downloadclient used (restrequestdownload was refactored)
+	* added partial import for faq. Also sends last updated date to rest service.
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-24 1.7.4 Frans van der Veen <extensions@netcreators.com>
+	* added repository method for finding all products with offset and limit
+	* fixed tabcontrol sizing, now takes into account outerheight
+	* fixed small size of title / question for faq
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-22 1.7.3 Frans van der Veen <extensions@netcreators.com>
+	* fixed incorrect decoding of html input string
+	* added generation of typolinks on import for all imported vacs because of agressive caching causing problems when viewing vacs that previously werent viewed
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-15 1.7.2 Frans van der Veen <extensions@netcreators.com>
+	* fixed problem in sync removing product
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-12 1.7.1 Frans van der Veen <extensions@netcreators.com>
+	* changed template to online version
+	* added hasrelatedproduct to domain model
+	* added auto-search 'title' replace functionality
+	* fixed link in topviewedfaq template
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-09 1.7.0 Frans van der Veen <extensions@netcreators.com>
+	* fixed findImportedWithLinksToProductsLimited and countImportedWithLinksToProductsLimited
+	* fixed problem with faq destination constraint
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-10-03 1.6.9 Frans van der Veen <extensions@netcreators.com>
+	* changed faq import functionality to change text -> htmlentities
+	* added functionality to trim the number of faqs shown related to product
+	* added 'more...' functionality when the number of faqs shown exceeds the configured number related to product
+	* added sorting between products and frequently asked questions
+	* changed aplus template: added relations
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-09-17 1.6.8 Frans van der Veen <extensions@netcreators.com>
+	* changed synchronizer, now uses abstract class as base
+	* added forceFullSynchronisation option, to force full sync
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-09-12 1.6.7 Frans van der Veen <extensions@netcreators.com>
+	* changed statistics registration code, now is configurable through TS
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-09-11 1.6.6 Tania Morales <extensions@netcreators.com>
+	* Changed dependencies to be able to upload to 4.6
+	* added changes to changelog
+	* changed version number to reflect changes
+
+2012-09-11 1.6.5 Frans van der Veen <extensions@netcreators.com>
+	* fixed referencelink repository function which returns zombielinks, now doesn't give warnings anymore and is more capable of big lists
+	* added view for antwoord+
+	* added option to clear cache for certain pages after vac sync
+	* changed statistics manger handling, now possible to have it use a different class, based on interface
+	* changed destination handling, now when no destination is configured, does not remove all faqs
+	* fixed problem where themes where shown while there aren't any
+	* fixed typo for product domain object
+	* changed some minor cleanups
+	* added getreferrer javascript
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-08-23 1.6.4 Frans van der Veen <extensions@netcreators.com>
+	* fixed faq import -> now acutally batches creation of intermediateobjects
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-08-23 1.6.3 Frans van der Veen <extensions@netcreators.com>
+	* changed faq import -> now uses nc_extbase_lib
+	* changed configuration to use faq import settings
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-08-20 1.5.3 Tania Morales <extensions@netcreators.com>
+	* added functionality to perform a partial import
+	* added configuration to enable partial import
+	* updated version number to reflect changes
+
+2012-08-10 1.5.2 Tania Morales <extensions@netcreators.com>
+	* changed function to dowload source to use extbase_lib download
+	* added configuration to get authentication parameters for REST requests
+	* updated version number to reflect changes
+
+2012-06-25 1.5.1 Frans van der Veen <extensions@netcreators.com>
+
+	* changed name & description for improved findability in the TER
+	* removed old antwoord message when editting the vac (which was very annoying)
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-06-25 1.5.0 Frans van der Veen <extensions@netcreators.com>
+
+	* added pid limitation setting for showing of relateable tt_address records for a product
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-06-25 1.4.9 Frans van der Veen <extensions@netcreators.com>
+
+	* removed pid setting / getting from keyword, ttaddress
+	* removed noconflict from tab functionality
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-03-12 1.4.8 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed problem with empty fields being shown
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-03-12 1.4.7 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed problem with invalid characters in search query
+	* added some improvements concerning loading of backend classes
+	* fixed problems with invalid html concerning webrichtlijnen
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-03-12 1.4.6 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed bug that gives an error when an logged in user views product detail / vac detail, while user is stored in another storagepage
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-03-06 1.4.5 Frans van der Veen <extensions@netcreators.com>
+
+	* added fields for eservices for referencelink
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-01-13 1.4.4 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed bug which caused referencelinks to be removed incorrectly
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-01-13 1.4.3 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed bug which would give duplicate results when searching
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-01-13 1.4.2 Frans van der Veen <extensions@netcreators.com>
+
+	* added functionality used for synchronizing VACs with SDU
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2012-01-12 1.4.1 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed IE tab problem
+	* added functionality for when no product was active
+	* fixed VAC import compatibiilty with TYPO3 4.4 versions
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-11-25 1.4.0 Frans van der Veen <extensions@netcreators.com>
+
+	* changed sdu template to better include SDU content
+	* added more extensive selector for enabling which RTE's to load and which not to load. Defaults to none, which is configurable.
+	* changed combinedPropertiesAvailable to use reflection property getters and setters
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-11-25 1.3.9 Frans van der Veen <extensions@netcreators.com>
+
+	* added external references
+	* added internal references
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-11-16 1.3.8 Frans van der Veen <extensions@netcreators.com>
+
+	* added referencelink utility functions
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-11-08 1.3.7 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed other properties tab enabling
+	* fixed default styling
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-11-08 1.3.6 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed az letter argument
+	* fixed default settings for searching samenwerkende catalogi
+	* fixed default styling
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-10-12 1.3.5 Frans van der Veen <extensions@netcreators.com>
+
+	* added forms field
+	* changed all templates, should be better stylable
+	* added default styling
+	* added tab toggling js (requires jquery)
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-10-12 1.3.4 Frans van der Veen <extensions@netcreators.com>
+
+	* added backward compatability for older typo3 versions (4.4.x)
+	* added local laws
+	* fixed top viewed to be loaded quicker (and that it can be cached)
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-05-26 1.3.3 Frans van der Veen <extensions@netcreators.com>
+
+	* changed how the configuration manager was gotten: now doesn't use deprecated functionality anymore
+	* changed caching for topViewed* views (can now be cached)
+	* changed layzloading for some objects (improve memory management, hopfully)
+	* removed manual adding of reconstituted objects in search
+	* added changes to changelog
+	* updated version number to reflect changes
+
+2011-05-26 1.3.2 Frans van der Veen <extensions@netcreators.com>
+
+	* added option to (force) produce clean faq related urls
+	* added changes to changelog
+	* changed product model, it now checks all related objects if they are NULL, and assigns objectstorages if needed
+	* changed link to faq from search result, now only links to a single faq (instead of faq in search)
+	* updated version number to reflect changes
+
+2011-05-09 1.3.1 Frans van der Veen <extensions@netcreators.com>
+
+	* changed search algorithm for products, now more accurate
+
+2011-05-05 1.3.0 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed compatibility with TYPO3 4.5.2
+	* added strict audience filtering (so business and private results can be handled separately)
+	* added possibility to check if user is logged in (for product)
+	* fixed a bug for existing records without 'referenceLaws' (which would be NULL if not properly initialized)
+	* changed azIndex: now uses lower case letters as parameter (more consistent with url handling)
+	* fixed logging of remote search (now request and result xml are actually logged when requested)
+	* fixed naming of an exception (now throws the right one)
+	* added previously unadded files
+	* added possibility to enable the old import module (disabled by default, since it's unused)
+	* changed version number to reflect changes (trunk/ext_emconf.php)
+	* changed changelog (trunk/Changelog)
+
+2011-04-29 1.2.8 Michiel Roos <extensions@netcreators.com>
+
+	* change: configurationManager -> localConfigurationManager
+	* change: require nc_extbase_lib 0.0.6 because of localConfigurationManager
+
+2011-02-23 1.2.7 Frans van der Veen <extensions@netcreators.com>
+
+	* change: minor code cleanup (Classes/Domain/Model/Product.php)
+	* addition: proper initialization (Classes/Domain/Model/TtAddress.php)
+	* fix: now uses equals instead of withUid (Classes/Domain/Repository/PagesRepository.php)
+	* fix: now uses equals instead of withUid (Classes/Domain/Repository/ProductRepository.php)
+	* fix: now uses equals instead of withUid (Classes/Domain/Repository/TtAddressRepository.php)
+	* fix: now uses equals instead of withUid (Classes/Domain/Repository/TtContentRepository.php)
+	* fix: supplyin keywords to SC feed (Classes/Xml/Publish/Product.php)
+	* addition: initial add (Classes/Xml/ThemeClassification/Exception/ParseXmlFailed.php)
+	* fix: correctly displays costs content in combination with TinyMCE (Resources/Private/Templates/Product/Detail.html)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2011-01-19 1.2.6 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: skip on value for import (Classes/Controller/BaseController.php)
+	* addition: finders (Classes/Domain/Repository/ProductRepository.php)
+	* addition: possible to skip importing line on value (Classes/Services/CsvImport/Helper.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2011-01-05 1.2.5 Frans van der Veen <extensions@netcreators.com>
+
+	* change: removed debugstatement & added modified date (for import) (Classes/Domain/Model/Product.php)
+	* fix: added urldecode to the link generation, which does not work correctly with typo3 links (Classes/Utility/Link.php)
+	* fix: adding referencelink to vac now opens referenlink instead of vac record creation (Configuration/TCA/frequentlyaskedquestion.php)
+	* addition: modified date (for import) (Configuration/TCA/product.php)
+	* addition: modified (for import) (Resources/Private/Language/locallang_db.xml)
+	* fix: added namespace (Resources/Private/Templates/Product/AzIndex.html)
+	* addition: modified date (for import) (ext_tables.sql)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-12-27 1.2.3 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: corrected doc comment (Classes/Domain/Model/FrequentlyAskedQuestion.php)
+	* fix: hasKeyword now uses the objectstorage container for existence checking (Classes/Domain/Model/Product.php)
+	* fix: added doc comments (Classes/Domain/Model/Product.php)
+	* change: set themes now accepts array as parameter, or string (Classes/Domain/Model/Product.php)
+	* addition: now possible to reference laws through referencelaws (Classes/Domain/Model/Product.php)
+	* addition: completed for import synchronisation with third parties (Classes/Domain/Model/Product.php)
+	* addition: can now be used as reference law  in product (Classes/Domain/Model/ReferenceLink.php)
+	* addition: product synchronisation functionality (Classes/Domain/Repository/ProductRepository.php)
+	* addition: cleanup for product referencelinks (Classes/Domain/Repository/ReferenceLinkRepository.php)
+	* addition: synchronisation exception (Classes/Domain/Repository/Exception.php)
+	* addition: imported, session number, reference laws (Configuration/TCA/product.php)
+	* addition: link for product (Configuration/TCA/referencelink.php)
+	* addition: translation for new columns (Resources/Private/Language/locallang_db.xml)
+	* addition: extra columns (ext_tables.sql)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-11-17 1.2.2 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: added exception for when the VAC xml contains very few records (<10) (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* addition: added url name for use in realurl clean urls (trunk/Classes/Utility/ThemeClassificationReader.php)
+	* change: more friendly for not imported faq entries (trunk/Classes/Domain/Service/FrequentlyAskedQuestion.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-11-03 1.2.1 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: forced impossible to save a FAQ which was imported (trunk/Configuration/TCA/frequentlyaskedquestion.php)
+	* addition: forced impossible to save a FAQ which was imported (trunk/Configuration/TCA/class.tx_ncgovpdc_faqreadonly_import.php)
+	* addition: forced impossible to save a FAQ which was imported (trunk/Configuration/TCA/class.tx_ncgovpdc_tceforms_process.php)
+	* addition: forced impossible to save a FAQ which was imported (trunk/ext_localconf.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-11-02 1.2.0 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: destination for VAC (trunk/Resources/Private/Language/locallang_flexform.xml)
+	* addition: the elements for the VAC 1.2.2 standard (trunk/Resources/Private/Language/locallang_db.xml)
+	* addition: TIO data (trunk/Resources/Private/Data/overheidThemaindelingOverheid_v1.6.xml)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/destination.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/frequentlyaskedquestionchannel.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/class.tx_ncgovpdc_special_columns.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/referencelink.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/revision.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/frequentlyaskedquestion.php)
+	* addition: added fields for the VAC 1.2.2 standard (trunk/Configuration/TCA/frequentlyaskedquestioncategory.php)
+	* addition: selector for the plugin to show the FAQs for the right destination (trunk/Configuration/FlexForms/flexform_pi.xml)
+	* addition: form viewhelper which is w3c correct (trunk/Classes/ViewHelpers/FormViewHelper.php)
+	* addition: theme classification reader (trunk/Classes/Utility/ThemeClassificationReader.php)
+	* addition: updated sychronizer to VAC format 1.2.2 (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* change: moved helper methods to domain service (trunk/Classes/Domain/Repository/FrequentlyAskedQuestionRepository.php)
+	* addition: destination for VAC 1.2.2 (trunk/Classes/Domain/Repository/DestinationRepository.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/Revision.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/FrequentlyAskedQuestion.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/ReferenceLink.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/Destination.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/FrequentlyAskedQuestionChannel.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/Authority.php)
+	* addition: updated models for VAC 1.2.2 (trunk/Classes/Domain/Model/Exception/LinkNotSpecified.php)
+	* addition: using faq domain service helper (trunk/Classes/Controller/BaseController.php)
+	* addition: settings for VAC 1.2.2 standard (trunk/Classes/Controller/BaseController.php)
+	* change: enforced VAC 1.2.2 standard rules on the displaying of FAQs (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: enforced VAC 1.2.2 standard rules on the displaying of FAQs (trunk/Classes/Controller/ProductController.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-10-07 1.1.1 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: made viewhelper for faqcontent - removes the <p>'s from the contentstream in the view so parseFunc will treat it right (Classes/ViewHelpers/FaqContentViewHelper.php)
+	* addition: used viewhelper for faqcontent (Classes/ViewHelpers/FaqContentViewHelper.php)
+	* fix: increased textsize for log messages, so extensive updates will also be registered (ext_tables.sql)
+	* fix: changed <p> for <div> to remove comflict if <ul> was used in RTE (Classes/Domain/Model/Product.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-09-02 1.1.1 Frans van der Veen <extensions@netcreators.com>
+
+	* change: refactored storage function log (trunk/Classes/Controller/BaseController.php)
+	* change: refactored storage function log (trunk/Classes/Domain/Repository/LogRepository.php)
+	* change: added functionality for redirection to self WITHOUT chash (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* fix: made sure the owmsCoreIdentifier is matched as it is stored (trunk/Classes/Domain/Model/ReferenceLink.php)
+	* addition: added finder for imported and owmscoreidentifier (trunk/Classes/Domain/Repository/FrequentlyAskedQuestionRepository.php)
+	* fix: improved performance (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* fix: now only works on imported records  (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-09-02 1.1.0 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: added better exception handling and logging (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* fix: added better exception handling and logging (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* change: forced referencelinks to be in the same sysfolder (trunk/Configuration/TCA/frequentlyaskedquestionchannel.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-09-02 1.0.9 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: fixed synchronisation error caused by incorrect casting (trunk/Classes/Services/Synchronisation/FrequentlyAskedQuestion.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-08-05 1.0.8 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: product not found handling (trunk/Classes/Controller/BaseController.php)
+	* addition: combinedproperties for product (trunk/Classes/Controller/BaseController.php)
+	* fix: extbase 1.1 compatibility (trunk/Classes/Controller/ProductController.php)
+	* fix: 404 handling (when product hidden / does not exist / validation fails) (trunk/Classes/Controller/ProductController.php)
+	* addition: combinable properties (trunk/Classes/Controller/ProductController.php)
+	* fix: extbase 1.1 compatibility (trunk/Classes/Domain/Model/Keyword.php)
+	* fix: extbase 1.1 compatibility (trunk/Classes/Domain/Model/Log.php)
+	* change: cleanup (trunk/Classes/Domain/Model/Product.php)
+	* fix: for some reason a direct connection with the object the object does not work(?). For now just using the uid itself (trunk/Classes/Domain/Model/ReferenceLink.php)
+	* change: added active state for selected letter (trunk/Classes/Domain/Repository/ProductRepository.php)
+	* change: added fixed detail view for product & frequently asked question (trunk/Configuration/FlexForms/flexform_pi.xml)
+	* change: added pid limitation to query for when the pdc is used more times in the same typo3 installation. (trunk/Configuration/TCA/frequentlyaskedquestion.php)
+	* fix: extbase 1.1 compatibility; added pid meta (trunk/Configuration/TCA/keyword.php)
+	* fix: extbase 1.1 compatibility; added pid and tstamp meta (trunk/Configuration/TCA/log.php)
+	* fix: extbase 1.1 compatibility; added tstamp meta (trunk/Configuration/TCA/tip.php)
+	* change: added active state for selected letter (trunk/Resources/Private/Templates/Product/azindex.html)
+	* addition: product not found handling (trunk/ext_localconf.php)
+	* fix: [SYSTEM WIDE] extbase 1.1 compatibility; added pid meta to tt_content (trunk/ext_tables.php)
+	* change: increased version number to reflect changes (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-07-28 1.0.5 Frans van der Veen <extensions@netcreators.com>
+
+	* change: template in product detail view only used when not empty
+
+2010-07-19 1.0.4 Frans van der Veen <extensions@netcreators.com>
+
+	* change: product only added to view when available (Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: 4.4 compatibility - removed reliance to resultiterator (Classes/Controller/ProductController.php)
+	* fix: added doc type comments (Classes/Domain/Model/Product.php)
+	* fix: added doc type comments (Classes/Domain/Model/TtContent.php)
+	* change: added detail (Resources/Private/Templates/FrequentlyAskedQuestion/detail.html)
+	* change: added back to product link (Resources/Private/Templates/FrequentlyAskedQuestion/detail.html)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-06-09 1.0.3 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: added product parameter for backlinking (Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-05-31 1.0.2 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: removed code which breaks tt_address (ext_tables.php)
+	* fix: now correctly catches exceptions when remote search fails (Classes/Controller/FrequentlyAskedQuestionController.php)
+	* addition: initial add (dummy - does nothing) (Classes/Domain/Model/Dummy.php)
+	* fix: added goup annotations which allow the records to be correctly loaded - without the need to break tt_address (Classes/Domain/Model/TtAddress.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-05-12 1.0.1 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: faq remote search now handles exceptions correctly (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-05-12 0.3.2 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: faq referencelink to product now works correctly (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* fix: faq referencelink to product now works correctly (trunk/Classes/Domain/Model/FrequentlyAskedQuestion.php)
+	* fix: faq referencelink to product now works correctly (trunk/Classes/Domain/Model/Product.php)
+	* fix: faq referencelink to product now works correctly (trunk/Classes/Domain/Model/ReferenceLink.php)
+	* fix: added creatorname fetching (trunk/Classes/Domain/Model/Tip.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-04-15 0.3.1 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: correctly renders the application url (/ncgov_pdc/trunk/Classes/Xml/Publish/ProductOnlineService.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-04-14 0.3.1 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: correctly generates the product detail url for the sc index feed (/ncgov_pdc/trunk/Classes/Xml/Publish/Product.php)
+	* fix: removed url_encode for product url subtag (/ncgov_pdc/trunk/Classes/Xml/Publish/ProductUrl.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-04-14 0.3.0 Frans van der Veen <extensions@netcreators.com>
+
+	* removal: unused flash message stuff (trunk/Classes/Controller/ProductController.php)
+	* addition: start theme index (trunk/Classes/Controller/ProductController.php)
+	* change: definition of crdate and tstamp fields (trunk/Classes/Domain/Model/Product.php)
+	* fix: now throws the correct (existing) exception (trunk/Classes/Services/Registration/Manager.php)
+	* fix: relies on the new type of the product model (DateTime) (trunk/Classes/Xml/Publish/Product.php)
+	* addition: themeIndex action (currently inactive) (trunk/Configuration/FlexForms/flexform_pi.xml)
+	* addition: now automatically fills out the last modified timestamp to today for the FAQ (trunk/Configuration/TCA/class.tx_ncgovpdc_tceforms_process.php)
+	* addition: now possible to change the name of the tabs & product column labels using pageTSConfig (trunk/Configuration/TCA/product.php)
+	* addition: themeIndex action label (trunk/Resources/Private/Language/locallang_flexform.xml)
+	* removal: removed the ridiculous default message / folder (trunk/Resources/Private/Templates/Standard)
+	* fix: added format.html (trunk/Resources/Private/Templates/Product/azindex.html)
+	* change: commented out turaround by default (trunk/Resources/Private/Templates/Product/detail.html)
+	* change: tabmenu now abuses unused product columns (trunk/Resources/Private/Templates/Product/tabmenu.html)
+	* change: added themeIndexAction to the available actions (ext_localconf.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-03-30 0.2.9 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: now adds the organisation to the default SC search (trunk/Classes/Xml/Search/ParameterFactory.php)
+	* addition: now adds the publisher to the default remote product list as requested by "e-overheid voor burgers" (trunk/Resources/Private/Templates/FrequentlyAskedQuestion/find.html)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-03-17 0.2.8 Frans van der Veen <extensions@netcreators.com>
+
+	* change: updated manual (trunk/doc/manual.sxw)
+	* change: updated manual (trunk/doc/manual.pdf)
+	* addition: debug configuration option for samenwerkende catalogi (trunk/Classes/Controller/BaseController.php)
+	* addition: debug logging of samenwerkende catalogi request and response xml (trunk/Classes/Domain/Repository/RemoteProductRepository.php)
+	* fix: now throws correct exception upon receiving invalid xml (trunk/Classes/Xml/Result/Parser.php)
+	* fix: now throws correct exception upon receiving invalid xml (trunk/Classes/Xml/Result/Exception.php)
+	* fix: now throws correct exception upon receiving invalid xml (trunk/Classes/Xml/Result/Exception/ParseXmlFailed.php)
+	* fix: correct translation (trunk/Resources/Private/Language/locallang_db.xml)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-03-16 0.2.7 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: added required default reach (trunk/Classes/Controller/BaseController.php)
+	* addition: added costs content elements (trunk/Classes/Domain/Model/Product.php)
+	* addition: added getter/setter for pid (trunk/Classes/Domain/Model/TtContent.php)
+	* fix: added search productname in samenwerkende catalogi (trunk/Classes/Xml/Search/ParameterFactory.php)
+	* addition: added costs content elements (trunk/Configuration/TCA/product.php)
+	* addition: added costs content elements (trunk/Resources/Private/Language/locallang_db.xml)
+	* addition: added costs content elements (trunk/Resources/Private/Templates/Product/detail.html)
+	* change (old change): tabbed menu for logged in user (trunk/Resources/Private/Templates/Product/tabmenu.html)
+	* addition: added costs content elements (trunk/ext_tables.sql)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-03-22 0.2.6 Frans van der Veen <extensions@netcreators.com>
+
+	* change: added configuration for outputting the xml feed (trunk/Classes/Controller/BaseController.php)
+	* change: now does not rely anymore on the reconstitution of objects in extbase (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: added configuration to die on output xml for samenwerkende catalogi feed (trunk/Classes/Controller/ProductController.php)
+	* change: removed flashmessage code (trunk/Classes/Controller/ProductController.php)
+	* change: now does not rely anymore on the reconstitution of objects in extbase (trunk/Classes/Domain/Repository/ProductRepository.php)
+	* fix: updated translation (trunk/Resources/Private/Language/locallang_db.xml)
+	* fix: now correctly creates date object from timestamp (trunk/Classes/Xml/Publish/Product.php)
+	* fix: now correctly supplies name, even if it contains html tags (trunk/Classes/Xml/Publish/ProductName.php)
+	* change: new version of manual (trunk/doc/manual.sxw)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-02-22 0.2.5 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: added check preventing exception when authority is empty (trunk/Classes/Domain/Model/FrequentlyAskedQuestion.php)
+	* fix: now sums the statistics of the records found, so you will get an accurate top x number (trunk/Classes/Domain/Repository/StatisticsRepository.php)
+	* fix: checks for NULL object (if the object was deleted after being viewed) (trunk/Classes/Domain/Model/Statistics.php)
+	* change: debug (trunk/Classes/Services/Web/Rest/Client.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-02-08 0.2.4 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: link now also works for file links (trunk/Classes/Domain/Model/Product.php)
+	* fix: urldecoded search param (trunk/Classes/Domain/Search/ParameterFactory.php)
+	* addition: now also works for file links (trunk/Classes/Utility/Link.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-02-08 0.2.3 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: reach configuration (Classes/Controller/BaseController.php)
+	* fix: when two instances of the plugin were used on the same page the search results were unexpected (Classes/Controller/FrequentlyAskedQuestionController.php)
+	* change: some test stuff (Classes/Controller/ProductController.php)
+	* fix: returns clones of related fields (Classes/Domain/Model/FrequentlyAskedQuestion.php, Classes/Domain/Model/FrequentlyAskedQuestionChannel.php,
+		Classes/Domain/Model/Product.php, Classes/Domain/Model/Registration.php)
+	* fix: added related uid getter for distinct selection feature (Classes/Domain/Model/Statistics.php)
+	* addition: method for removing all registered products used in this pageview (multiple plugin instance) (Classes/Domain/Repository/ProductRepository.php)
+	* addition: inserting relation to product, since extbase ends up in infinite loop when relating product a to either itself or product b which has a relation to product a (Classes/Domain/Repository/ProductRepository.php)
+	* fix: now correctly returns only one time the product / vac viewed (Classes/Domain/Repository/StatisticsRepository.php)
+	* change: readcsv now public (Classes/Services/CsvImport/Helper.php)
+	* addition: quick and dirty additional import (Classes/Services/CsvImport/QuicknDirtyAdditionalHvtImporter.php)
+	* removed: unused method (Classes/Services/Statistics/Manager.php)
+	* addition: configurable reach to the factory (Classes/Xml/Search/ParameterFactory.php)
+	* fix: a node can be rendered if some of its children can be rendered, right? (Classes/Xml/Node.php)
+	* change: excluded self from related products list (Configuration/TCA/product.php)
+	* change: updated manual (doc/manual.sxw)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-01-26 0.2.1 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: configurable to add title to page (trunk/Classes/Controller/BaseController.php)
+	* addition: adds title to page (trunk/Classes/Controller/FrequentlyAskedQuestionController.php)
+	* addition: adds title to page (trunk/Classes/Controller/ProductController.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* change: updated changelog (trunk/Changelog)
+
+2010-01-26 0.2.0 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: tab menu action (trunk/Configuration/FlexForms/flexform_pi.xml)
+	* addition: tab menu action (trunk/Classes/Controller/Product.php)
+	* addition: tab menu action (trunk/Resources/Private/Language/locallang_flexform.xml)
+	* addition: tab menu action (trunk/ext_localconf.php)
+	* change: added pid restriction to queries (trunk/Classes/Domain/Repository/ProductRepository.php)
+	* change: limited reach of samenwerkende catalogi to non-municipality (trunk/Classes/Xml/Search/ParameterFactory.php)
+	* fix: RTE now correctly saves links (trunk/Configuration/TCA/frequentlyaskedquestionchannel.php)
+	* fix: RTE now correctly saves links (trunk/Configuration/TCA/product.php)
+	* change: attachment can now be any type except php, php3 (trunk/Configuration/TCA/product.php)
+	* change: updated version number (trunk/ext_emconf.php)
+	* addition: manual (trunk/doc/manual.sxw)
+	* change: updated changelog (trunk/Changelog)
+
+2010-01-13 0.1.9 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: storagePid restriction to finding products
+
+2010-01-11 0.1.8 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: RTEs now handle links correctly
+	* addition: separate product menu
+
+2010-01-04 0.1.7 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: minor bugs
+	* update: label for vac subjects completed
+
+2009-12-24 0.1.6 Frans van der Veen <extensions@netcreators.com>
+
+	* fix: registration handling broken (flexform not correctly configured)
+
+2009-12-18 0.1.6 Frans van der Veen <extensions@netcreators.com>
+
+	* addition: statistics manager now registers product & faq views
+	* addition: statistics show top viewed products & faqs
+	* addition: user availability, now shows users wich are available for a product
+				user availability is fully configurable for different types of user records (fe_user, smoelenboek, tt_address)
+
+2009-12-15 0.1.5 Frans van der Veen <extensions@netcreators.com>
+
+	* fix import tool, now works without having a hacked extbase
+	* change merged all plugins into one plugin, with configurable actions
+	* fix link between faq and faqchannels is now as it should be
+	* fix possible to specify alternative template for product detail
+	* fix alternative template now works with configurable path
+	* fix samcat search works now with refactored search engine
+
+2009-12-07 0.1.4 Frans van der Veen <extensions@netcreators.com>
+
+	* added registration handling
+	* added index controller for better URL generation with realurl
+	* updated templates to use index controller
+
+2009-11-20 0.1.3 Frans van der Veen <extensions@netcreators.com>
+
+	* added tip creation / removal / update
+
+2009-11-10 0.1.2 Frans van der Veen <extensions@netcreators.com>
+
+	* several major improvements
+	* improved showing of backend forms
+	* improved search algorithm
+	* updated for latest extbase (beta 2)
+	* now possible to add, remove, edit tips from frontend
+	* Samenwerkende Catalogi now works
+	* filtering for audience now works
+	* possible to create a hidden faq, only visible to certain users / groups
+	* products only visible to certain groups or users
+
+2009-09-14 0.1.1 Frans van der Veen <extensions@netcreators.com>
+
+	* fixed crash when showing internal links in product detail view
+
+2009-09-9 0.1.1 Frans van der Veen <extensions@netcreators.com>
+
+	* removed multiple declaration in TCA for several relation fields (multiple allows selecting the same value more than once).
+	* updated audience sql declaration for products and frequently asked questions
+	* added samenwerkende catalogi index-feed
+	* fixed showing results even if they are only samcat products
+
+2009-09-8 0.1.0 Frans van der Veen <extensions@netcreators.com>
+
+	* added samenwerkende catalogi
+	* fixed minor bugs
+
+2009-09-1 0.0.9 Frans van der Veen <extensions@netcreators.com>
+
+	* added importwizard
+
+2009-08-21 0.0.8 Frans van der Veen <extensions@netcreators.com>
+
+	* made compliant with OHA VAC standards
+	* added VAC stream importer
+	* BEUH
+
+2009-07-30 0.0.6 Frans van der Veen <extensions@netcreators.com>
+
+	* added themes to backend
+	* updated default TS with new version extbase
+
+2009-07-30 0.0.5 Frans van der Veen <extensions@netcreators.com>
+
+	* updated faq search to be compatible with new version of extbase
+	* updated faq search to have a more strict separation of logic
+
+2009-07-14 0.0.4 Frans van der Veen <extensions@netcreators.com>
+
+	* Added faq search through product synonyms
+	* Added faq search through product keywords
+	* Added faq show product related to questions
+	* Added faq view & search
+
+2009-07-05 0.0.3 Frans van der Veen <extensions@netcreators.com>
+
+	* Updated detail view
+
+2009-06-28 0.0.2 Frans van der Veen <extensions@netcreators.com>
+
+	* Updated a-z index view (updated template, added total alphabet)
+	* Updated detail view (added linkfields, parts only viewable for those with access)
+	* Updated backend records (added MM type tables for links between products)
+
+2009-06-21 0.0.1 Frans van der Veen <extensions@netcreators.com>
+
+	* First version published on development site
+	* Created backend records
+	* Created a-z index view
+	* Created detail view
+	* Created extension
+	* Created repositories

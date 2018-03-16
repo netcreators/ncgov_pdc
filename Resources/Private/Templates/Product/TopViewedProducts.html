@@ -1,0 +1,10 @@
+<f:if condition="{topViewedProducts}">
+    <ul class="pdc-content pdc-product pdc-product-links pdc-topviewed products">
+        <f:for each="{topViewedProducts}" as="statistics">
+            <li>
+                <f:link.action class="pdc-link-product pdc-link" pageUid="{settings.pages.productDetailPage}" action="detail" arguments="{product: statistics.product}">{statistics.product.name}</f:link.action>
+                <span class="topviewed-count">({statistics.count})</span>
+            </li>
+        </f:for>
+    </ul>
+</f:if>

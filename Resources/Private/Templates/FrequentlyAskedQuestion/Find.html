@@ -1,0 +1,118 @@
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+<f:if condition="{settings.controllers.FrequentlyAskedQuestion.actions.find.showSearchBox}">
+	<f:form pageUid="{settings.pages.searchPage}" method="post" controller="FrequentlyAskedQuestion" action="find" name="searchForm" class="pdc-search-form pdc-search">
+		<f:form.textfield id="pdc-input-search" name="search" value="{search}" class="input pdc-search-word pdc-input" />
+		<f:form.submit class="submit pdc-input" value="Zoek" />
+		<div class="pdc-search-options">
+			<f:if condition="{displaySearchOptionMatchExactPhrase}">
+				<f:then>
+					<f:form.checkbox id="pdc-input-matchExactPhrase" name="matchExactPhrase" value="1" checked="{matchExactPhrase}" class="check pdc-input" /><label for="pdc-input-matchExactPhrase" id="pdc-input-matchExactPhrase-label"><f:translate key="faq_match_exact_phrase">Zoek naar complete zin</f:translate></label>
+				</f:then>
+				<f:else>
+					<f:form.hidden name="matchExactPhrase" value="{matchExactPhrase}" />
+				</f:else>
+			</f:if>
+			<f:if condition="{displaySearchOptionIncludePrivateResults}">
+				<f:then>
+					<f:form.checkbox id="pdc-input-include-private-results" name="includePrivateResults" value="1" checked="{includePrivateResults}"class="check pdc-input" /><label for="pdc-input-include-private-results" id="pdc-input-include-private-results-label"><f:translate key="faq_find_private">Particulier</f:translate></label>
+				</f:then>
+				<f:else>
+					<f:form.hidden name="includePrivateResults" value="{includePrivateResults}" />
+				</f:else>
+			</f:if>
+			<f:if condition="{displaySearchOptionIncludeBusinessResults}">
+				<f:then>
+					<f:form.checkbox id="pdc-input-include-business-results" name="includeBusinessResults" value="1" checked="{includeBusinessResults}" class="check pdc-input" /><label for="pdc-input-include-business-results" id="pdc-input-include-business-results-label"><f:translate key="faq_find_business">Organisatie / Ondernemer</f:translate></label>
+				</f:then>
+				<f:else>
+					<f:form.hidden name="includeBusinessResults" value="{includeBusinessResults}" />
+				</f:else>
+			</f:if>
+			<f:if condition="{displaySearchOptionIncludeRemoteProducts}">
+				<f:then>
+					<f:form.checkbox id="pdc-input-include-remote-results" name="includeRemoteProducts" value="1" checked="{includeRemoteProducts}" class="check pdc-input" /><label for="pdc-input-include-remote-results" id="pdc-input-include-remote-results-label"><f:translate key="faq_find_remote">Waterschap, provincie, rijk</f:translate></label>
+				</f:then>
+				<f:else>
+					<f:form.hidden name="includeRemoteProducts" value="{includeRemoteProducts}" />
+				</f:else>
+			</f:if>
+		</div>
+
+
+	</f:form>
+
+	<f:if condition="{noResults}">
+		<f:if condition="{searchWasEmpty}">
+			<div class="pdc-content pdc-pose-question">
+				<f:format.html>{contentPoseQuestion}</f:format.html>
+			</div>
+		</f:if>
+	</f:if>
+</f:if>
+
+<f:if condition="{noResults}">
+	<f:then>
+		<f:if condition="{search}">
+			<h3 class="pdc-subheader pdc-search pdc-search-no-results"><f:translate key="faq_no_results">Geen resultaten</f:translate></h3>
+			<div class="pdc-content pdc-search pdc-search-no-results">
+				Er zijn geen producten gevonden voor uw zoekvraag. Probeert u het opnieuw met andere zoekwoorden.
+			</div>
+		</f:if>
+	</f:then>
+
+	<f:else>
+		<f:if condition="{products}">
+			<h2 class="pdc-subheader pdc-search">
+				<f:translate key="faq_found_products">Gerelateerde producten</f:translate>
+			</h2>
+			<ul class="pdc-content pdc-search">
+				<f:for each="{products}" as="product">
+					<li>
+						<f:link.action class="pdc-link-product pdc-link" pageUid="{settings.pages.productDetailPage}" controller="Product" action="detail" arguments="{product: product}">{product.name}</f:link.action>
+						<f:if condition="{product.owmsMantleAbstract}">
+							<f:then>
+								<span class="pdc-content pdc-product-abstract">{product.owmsMantleAbstract}...</span>
+							</f:then>
+							<f:else>
+								<f:if condition="{product.shortDescription}">
+									<span class="pdc-content pdc-product-shortDescription">{product.shortDescription}...</span>
+								</f:if>
+							</f:else>
+						</f:if>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+		<f:if condition="{frequentlyAskedQuestions}">
+			<h2 class="pdc-subheader pdc-search">
+				<f:translate key="faq_results">Antwoorden op uw vraag</f:translate>
+			</h2>
+			<ul class="pdc-content pdc-search pdc-faq-results">
+				<f:for each="{frequentlyAskedQuestions}" as="frequentlyAskedQuestionContainer">
+					<f:for each="{frequentlyAskedQuestionContainer.frequentlyAskedQuestionChannels}" as="frequentlyAskedQuestion">
+						<li><f:link.action class="pdc-link-faq pdc-link" pageUid="{settings.pages.frequentlyAskedQuestionDetailPage}" arguments="{frequentlyAskedQuestion: frequentlyAskedQuestionContainer}">{frequentlyAskedQuestion.question}</f:link.action></li>
+					</f:for>
+				</f:for>
+			</ul>
+		</f:if>
+		<f:if condition="{remoteProducts}">
+			<h2 class="pdc-subheader pdc-search">
+				<f:translate key="faq_found_remote_products">Gerelateerde producten bij andere overheden</f:translate>
+			</h2>
+			<ul class="pdc-content pdc-search">
+				<f:for each="{remoteProducts}" as="product">
+					<li>
+						<a class="pdc-link-scproduct pdc-link" href="{product.owmsCoreIdentifier}">{product.owmsCoreTitle}</a>
+						<f:if condition="{product.owmsCoreAuthority}">
+							<div class="pdc-scproduct-authority pdc-search">({product.owmsCoreAuthority})</div>
+						</f:if>
+						<f:if condition="{product.productHtml}">
+							<span class="pdc-content pdc-product-abstract"><pdc:stripTags>{product.productHtml}</pdc:stripTags></span>
+						</f:if>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</f:else>
+</f:if>
+

@@ -1,0 +1,65 @@
+
+<f:comment>This is a copy of EXT:nc_extbase_lib/Resources/Private/Templates/BaseSynchronizerModule/Status.html</f:comment>
+
+<f:layout name="Backend/Default" />
+
+<f:section name="iconButtons">
+</f:section>
+
+<f:section name="content">
+    <f:flashMessages />
+    <h1>{synchronizerName} synchronisation status</h1>
+
+    <h2>Status van synchronisatie</h2>
+    <f:if condition="{state.taskState}">
+        <f:then>
+            <f:if condition="{state.isDone}">
+                <f:then>
+                    <div>Status: Geen actieve taak gevonden</div>
+                </f:then>
+                <f:else>
+                    <f:if condition="{state.sequenceDone}">
+                        <f:then>
+                            <div>Status: Wachtende</div>
+                            <f:if condition="{state.forceStart}">
+                                <f:then>
+                                    <div>Gaat zsm beginnen.</div>
+                                </f:then>
+                                <f:else>
+                                    <div>Idle, wachtende op volgende run.</div>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{state.sequenceStarted}">
+                                <div>Status: Actief</div>
+                                <div>Actieve taak: {state.activeTask}</div>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:if>
+            <div>
+                <f:link.action action="initiateRunByUser">Start een synchronisatie (zsm)</f:link.action>
+            </div>
+            <div>
+                <f:if condition="{state.isDone}">
+                    <f:else>
+                        <f:link.action action="resetSynchronization">Reset
+                            de synchronisatie
+                        </f:link.action>
+                    </f:else>
+                </f:if>
+            </div>
+            <hr>
+            <f:if condition="{state.log}">
+                <div>log:</div>
+                <pre>{state.log.message}</pre>
+            </f:if>
+        </f:then>
+        <f:else>
+            <div>Status: Geen taak gevonden</div>
+        </f:else>
+    </f:if>
+
+</f:section>

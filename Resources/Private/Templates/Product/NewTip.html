@@ -1,0 +1,21 @@
+<div class="csc-header csc-header-n1">
+    <h2 class="csc-firstHeader"><f:translate key="product_tip_add_tip_to">Notitie toevoegen aan</f:translate> "{product.name}"</h2>
+</div>
+<f:if condition="{userAuthorisedAndLoggedIn}">
+    <p><f:translate key="product_tips">Gebruikersnotitie toevoegen:</f:translate></p>
+    <div class="pdc-add-tipform">
+        <f:form method="post" controller="Product" action="createTip" name="tip" object="{tip}" arguments="{product : product}">
+            <p>
+                <label for="name"><f:translate key="product_tip_subject">Onderwerp notitie</f:translate></label>
+                <f:form.textfield property="name" />
+            </p>
+            <p>
+                <label for="description"><f:translate key="product_tip_description">Beschrijving</f:translate></label>
+                <f:form.textarea property="description" rows="8" cols="46" />
+            </p>
+            <p>
+                <f:form.submit class="submit" value="{f:translate(key:'product_tip_send', default:'Verstuur')}"/>
+            </p>
+        </f:form>
+    </div>
+</f:if>

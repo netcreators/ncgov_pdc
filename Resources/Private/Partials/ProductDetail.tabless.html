@@ -1,0 +1,270 @@
+<f:if condition="{availableUsers}">
+    <h4><f:translate key="product_detail_contact_persons">Contactpersonen</f:translate></h4>
+    <f:for each="{availableUsers}" as="availableUser">
+        <f:image src="{availableUser.special.pdc_status_icon}" alt="{availableUser.special.pdc_status_description}" />
+        <f:for each="{availableUser.data}" as="value">
+            {value}
+        </f:for>
+        <br />
+    </f:for>
+</f:if>
+
+<div class="csc-header csc-header-n1">
+    <h2 class="csc-firstHeader">{product.name}</h2>
+</div>
+<ul>
+<li>
+<f:if condition="{product.image}">
+    <p class="product_detail_image"><f:image src="{product.image}" maxWidth="{maxWidth}" maxHeight="{maxHeight}" alt="Product image" /></p>
+</f:if>
+<f:if condition="{product.hasFullDescription}">
+    <p><f:format.html>{product.fullDescription}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullExtraInfo}">
+    <p><f:format.html>{product.fullExtraInfo}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullApplyInfo}">
+    <p><f:format.html>{product.fullApplyInfo}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullContactInfo}">
+    <p><f:format.html>{product.fullContactInfo}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullRequiredForApplication}">
+    <p><f:format.html>{product.fullRequiredForApplication}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullLegalBasis}">
+    <p><f:format.html>{product.fullLegalBasis}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullTerms}">
+    <p><f:format.html>{product.fullTerms}</f:format.html></p>
+</f:if>
+<f:if condition="{product.hasFullResult}">
+    <p><f:format.html>{product.fullResult}</f:format.html></p>
+</f:if>
+<f:if condition="{showRelatedProducts}">
+    <f:if condition="{product.relatedProducts}">
+        <p><f:translate key="product_detail_related_products">Gerelateerde producten:</f:translate></p>
+        <ul>
+            <f:for each="{product.relatedProducts}" as="relatedproduct">
+                <li>
+                    <f:link.action controller="Product" action="detail" arguments="{product: relatedproduct}">{relatedproduct.name}</f:link.action>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+</f:if>
+<f:if condition="{product.costs}">
+    <p><f:translate key="product_detail_request"><f:translate key="product_detail_costs">Leges</f:translate>:</f:translate></p>
+    <p><a href="{product.costsLinkUri}" title="{product.costsLinkTitle}">{product.costsLinkName}</a></p>
+</f:if>
+<f:if condition="{product.costsContent}">
+    <p><f:translate key="product_detail_request"><f:translate key="product_detail_costs">Leges</f:translate>:</f:translate></p>
+    <f:for each="{product.costsContent}" as="cost">
+        <f:format.html parseFuncTSPath="">{cost}</f:format.html>
+    </f:for>
+</f:if>
+<!--<p><f:translate key="product_turnaround">Doorlooptijd:</f:translate></p>
+<p>{product.turnaround}</p> -->
+<f:if condition="{userAuthorisedAndLoggedIn}">
+    <f:if condition="{product.tips}">
+        <f:then>
+            <p><f:translate key="product_detail_tips">Gebruikersnotities:</f:translate></p>
+            <ul>
+                <f:for each="{product.tips}" as="tip">
+                    <li>
+                        <f:format.date format="d-m-Y H:i">{tip.tstamp}</f:format.date> <f:translate key="product_detail_by">door</f:translate> {tip.creatorName}<br />
+                        {tip.name}<br />
+                        {tip.description}<br />
+                        <f:link.action action="editTip" arguments="{product: product, tip: tip}"><f:translate key="product_detail_tip_edit">Bewerk</f:translate></f:link.action>
+                        <f:link.action action="removeTip" arguments="{product: product, tip: tip}"><f:translate key="product_detail_tip_remove">Verwijder</f:translate></f:link.action>
+                    </li>
+                </f:for>
+                <li class="new_product_tip">
+                    <strong>
+                        <f:link.action action="newTip" arguments="{product: product}">
+                            <f:translate key="product_detail_tip_new">Voeg een notitie toe</f:translate>
+                        </f:link.action>
+                    </strong>
+                </li>
+            </ul>
+        </f:then>
+        <f:else>
+            <p><f:translate key="product_detail_tips">Gebruikersnotities:</f:translate></p>
+            <ul>
+                <li class="new_product_tip">
+                    <strong>
+                        <f:link.action action="newTip" arguments="{product: product}">
+                            <f:translate key="product_detail_tip_new">Voeg een notitie toe</f:translate>
+                        </f:link.action>
+                    </strong>
+                </li>
+            </ul>
+        </f:else>
+    </f:if>
+    <p><f:translate key="product_detail_changes">Wijzigingen:</f:translate></p>
+    <p><f:format.html>{product.changes}</f:format.html></p>
+    <f:if condition="{product.responsibles}">
+        <p><f:translate key="product_detail_responsibles">Verantwoordelijken</f:translate>:</p>
+        <ul>
+            <f:for each="{product.responsibles}" as="responsible">
+                <li>
+                    {responsible.name}
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.authorities}">
+        <p><f:translate key="product_detail_authorities">Groepen</f:translate>:</p>
+        <ul>
+            <f:for each="{product.authorities}" as="authority">
+                <li>
+                    {authority.title}
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.synonyms}">
+        <p><f:translate key="product_synonyms"><f:translate key="product_detail_synonyms">Synoniemen</f:translate>:</f:translate></p>
+        <ul>
+            <f:for each="{product.synonyms}" as="synonym">
+                <li>
+                    {synonym.synonym}
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.keywords}">
+        <p><f:translate key="product_keywords"><f:translate key="product_detail_keywords">Kernwoorden</f:translate>:</f:translate></p>
+        <ul>
+            <f:for each="{product.keywords}" as="keyword">
+                <li>
+                    {keyword.keyword}
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.directive}">
+        <p><f:translate key="product_detail_working_instructions">Werkinstructies</f:translate>:</p>
+        <p><a href="{product.directiveLinkUri}" title="{product.directiveLinkTitle}">{product.directiveLinkName}</a></p>
+    </f:if>
+    <f:if condition="{product.processDescription}">
+        <p><f:translate key="product_detail_process_description">Procesbeschrijving</f:translate></p>
+        <p><a href="{product.processDescriptionLinkUri}" title="{product.processDescriptionLinkTitle}">{product.processDescriptionLinkName}</a></p>
+    </f:if>
+</f:if>
+<f:if condition="{showRelatedFAQs}">
+    <f:if condition="{answers}">
+        <p><f:translate key="product_detail_questions">Vraag antwoord combinaties</f:translate>:</p>
+        <f:if condition="{product.hasFrequentlyAskedQuestionInfo}">
+            <p><f:format.html>{product.frequentlyAskedQuestionInfo}</f:format.html></p>
+        </f:if>
+        <ul>
+            <f:for each="{answers}" as="frequentlyAskedQuestionContainer">
+                <f:for each="{frequentlyAskedQuestionContainer.frequentlyAskedQuestionChannels}" as="frequentlyAskedQuestion">
+                    <f:if condition="{frequentlyAskedQuestionContainer.isActive}">
+                        <f:then>
+                            <li>
+                                <h3>
+                                    {frequentlyAskedQuestion.question}
+                                    <f:if condition="{frequentlyAskedQuestionContainer.imported}">
+                                        ({frequentlyAskedQuestionContainer.owmsMantleAuthority})
+                                    </f:if>
+                                </h3>
+                            </li>
+                            <li>
+                                <f:format.html>
+                                    {frequentlyAskedQuestion.shortAnswer}
+                                    {frequentlyAskedQuestion.answer}
+                                </f:format.html>
+                            </li>
+                            <f:if condition="{userAuthorisedAndLoggedIn}">
+                                <f:if condition="{frequentlyAskedQuestion.authorizedAnswer}">
+                                    <li>
+                                        <f:translate key="faq_underwater_answer">Extra informatie voor medewerker:</f:translate>
+                                    </li>
+                                    <li>
+                                        {frequentlyAskedQuestion.authorizedAnswer}
+                                    </li>
+                                </f:if>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <li>
+                                <strong><f:link.action controller="FrequentlyAskedQuestion" action="detail" arguments="{product: product, frequentlyAskedQuestion: frequentlyAskedQuestionContainer}">{frequentlyAskedQuestion.question}</f:link.action></strong>
+                            </li>
+                        </f:else>
+                    </f:if>
+                </f:for>
+                <f:if condition="{frequentlyAskedQuestionContainer.isActive}">
+                    <f:if condition="{frequentlyAskedQuestionContainer.referenceFrequentlyAskedQuestions}">
+                        <li>
+                            <p><f:translate key="faq_related_questions">Gerelateerde vragen:</f:translate></p>
+                        </li>
+                        <f:for each="{frequentlyAskedQuestionContainer.referenceFrequentlyAskedQuestionsFiltered}" as="referenceLink">
+                            <f:if condition="{referenceLink.isValid}">
+                                <li>
+                                    <a href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a>
+                                </li>
+                            </f:if>
+                        </f:for>
+                    </f:if>
+                    <f:if condition="{frequentlyAskedQuestionContainer.owmsMantleSubjects}">
+                        <li>
+                            <p><f:translate key="faq_related_themes">Gerelateerde thema's:</f:translate></p>
+                        </li>
+                        <f:for each="{frequentlyAskedQuestionContainer.owmsMantleSubjectsWithName}" as="subject">
+                            <li>
+                                {subject.name}
+                            </li>
+                        </f:for>
+                    </f:if>
+                    <li>
+                        <p><f:translate key="faq_modified">Bijgewerkt</f:translate>: <f:format.date format="d-m-Y">{frequentlyAskedQuestionContainer.owmsCoreModified}</f:format.date></p>
+                    </li>
+                    <li>
+                        <p><f:translate key="faq_source">Bron</f:translate>: {frequentlyAskedQuestionContainer.owmsMantleAuthority}</p>
+                    </li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+</f:if>
+<f:if condition="{product.attachments}">
+    <p><f:translate key="product_detail_attachments">Bijlagen</f:translate>:</p>
+    <ul>
+        <f:for each="{product.attachments}" as="attachment">
+            <li>
+                <a href="{attachment.url}">{attachment.name}</a>
+            </li>
+        </f:for>
+    </ul>
+</f:if>
+<f:if condition="{product.contactAddresses}">
+    <p><f:translate key="product_detail_address">Contactgegevens</f:translate>:</p>
+    <ul>
+        <f:for each="{product.contactAddresses}" as="contactAddress">
+            <f:if condition="{contactAddress.name}"><li class="pdc-faq-contact"><strong>{contactAddress.name}</strong></li></f:if>
+            <f:if condition="{contactAddress.address}"><li class="pdc-faq-contact-address"><f:format.nl2br>{contactAddress.address}</f:format.nl2br></li></f:if>
+            <f:if condition="{contactAddress.email}"><li class="pdc-faq-contact-email"><f:link.email email="{contactAddress.email}" /></li></f:if>
+            <f:if condition="{contactAddress.phone}"><li class="pdc-faq-contact-phone">{contactAddress.phone}</li></f:if>
+            <f:if condition="{contactAddress.fax}"><li class="pdc-faq-contact-fax">{contactAddress.fax}</li></f:if>
+            <f:if condition="{contactAddress.company}"><li class="pdc-faq-contact-address-company">{contactAddress.company}</li></f:if>
+            <f:if condition="{contactAddress.description}"><li class="pdc-faq-contact-description"><f:format.html>{contactAddress.description}</f:format.html></li></f:if>
+        </f:for>
+    </ul>
+</f:if>
+<f:if condition="{product.requestForm}">
+    <p><f:translate key="product_detail_request_form">Aanvraagformulier:</f:translate></p>
+    <p><a href="{product.requestFormLinkUri}" title="{product.requestFormLinkTitle}">{product.requestFormLinkName}</a></p>
+</f:if>
+<f:if condition="{product.source}">
+    <p><f:translate key="product_detail_source">Bron:</f:translate></p>
+    <p><a href="{product.sourceLinkUri}" title="{product.sourceLinkTitle}">{product.sourceLinkName}</a></p>
+</f:if>
+<f:if condition="{product.relatedRegulatory}">
+    <p><f:translate key="product_detail_related_requlatory">Wettelijke grondslag:</f:translate></p>
+    <p><a href="{product.relatedRegulatoryLinkUri}" title="{product.relatedRegulatoryLinkTitle}">{product.relatedRegulatoryLinkName}</a></p>
+</f:if>
+<p><f:translate key="product_detail_modified">Bijgewerkt</f:translate>: <f:format.date format="d-m-Y">{product.tstamp}</f:format.date></p>
+</li>
+</ul>

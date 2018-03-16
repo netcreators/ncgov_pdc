@@ -1,0 +1,87 @@
+
+plugin.tx_ncgovpdc.settings {
+	database {
+		FrequentlyAskedQuestion {
+			# searchableColumns = question, answer
+		}
+		Product {
+			# note: name is searched automatically
+			# searchableColumns = description
+		}
+	}
+	controllers {
+		FrequentlyAskedQuestion {
+			actions {
+				find {
+					maxFrequentlyAskedQuestionResultCount = 5
+					maxFrequentlyAskedQuestionKeywordResultCount = 5
+					maxFrequentlyAskedQuestionProductResultCount = 5
+					maxFrequentlyAskedQuestionSynonymResultCount = 10
+					maxSamenwerkendeCatalogiResultCount = 5
+					maxProductResultCount = 5
+					maxProducts = 5
+					maxResultPagesCount = 1
+					showSearchBox = 1
+					searchOptions {
+						// Show or hide search options checkboxes
+						display {
+							matchExactPhrase = 0
+							includePrivateResults = 1
+							includeBusinessResults = 1
+							includeRemoteProducts = 1
+						}
+						// Set default values for search options (regardless of if checkboxes are shown or hidden)
+						defaultValues {
+							matchExactPhrase = 0
+							includePrivateResults = 1
+							includeBusinessResults = 1
+							includeRemoteProducts = 0
+						}
+					}
+				}
+			}
+		}
+		Product {
+			actions {
+				publishXml {
+					OWMS.core.spatial {
+						# e.g. http://standaarden.overheid.nl/owms/terms/Brummen
+						resourceIdentifier =
+						# e.g. Brummen
+						value =
+					}
+					OWMS.core.authority < OWMS.core.spatial
+				}
+			}
+		}
+	}
+}
+
+# Allow for e.g. a 'related themes for product' plugin on the same page as the 'detail' plugin.
+plugin.tx_ncgovpdc.mvc.callDefaultActionIfActionCantBeResolved = 1
+
+lib.parseFunc_RTE_pdc < lib.parseFunc_RTE
+
+#plugin.tx_ncgovpdc_controller < plugin.tx_ncgovpdc.settings
+#plugin.tx_ncgovpdc_controller {
+#	maxItems = 5
+#}
+
+# This is an example how to modify the translation
+plugin.tx_ncgovpdc._LOCAL_LANG {
+	default {
+		read_more = more >>
+	}
+}
+
+plugin.tx_ncgovpdc.view {
+	templateRootPaths {
+		0 = EXT:ncgov_pdc/Resources/Private/Templates/
+	}
+	partialRootPaths {
+		0 = EXT:ncgov_pdc/Resources/Private/Partials/
+	}
+	layoutRootPaths {
+		0 = EXT:ncgov_pdc/Resources/Private/Layouts/
+	}
+}

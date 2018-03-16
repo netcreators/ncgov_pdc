@@ -1,0 +1,72 @@
+<f:if condition="{answers}">
+	<div class="pdc-subheader pdc-faq pdc-related-faqs">
+		<f:translate key="product_detail_questions">Vragen</f:translate>
+	</div>
+	<f:if condition="{product.hasFrequentlyAskedQuestionInfo}">
+		<div class="pdc-content pdc-faq">
+			<f:format.html>{product.frequentlyAskedQuestionInfo}</f:format.html>
+		</div>
+	</f:if>
+	<ul class="pdc-content pdc-faq pdc-related-faqs">
+		<f:for each="{answers}" as="frequentlyAskedQuestionContainer">
+			<f:for each="{frequentlyAskedQuestionContainer.frequentlyAskedQuestionChannels}" as="frequentlyAskedQuestion">
+				<li><f:link.action class="pdc-link-faq pdc-link" pageUid="{settings.pages.frequentlyAskedQuestionDetailPage}" arguments="{frequentlyAskedQuestion: frequentlyAskedQuestionContainer}">{frequentlyAskedQuestion.question}</f:link.action></li>
+			</f:for>
+		</f:for>
+		<f:if condition="{hasMoreAnswers}">
+			<li><f:link.action class="pdc-link-faq pdc-link" pageUid="{settings.pages.productDetailPage}" arguments="{product: product, showMore: 1}"><f:translate key="product_detail_more">Meer...</f:translate></f:link.action></li>
+		</f:if>
+	</ul>
+</f:if>
+<f:if condition="{product.relatedProducts}">
+	<div class="pdc-subheader pdc-faq pdc-related-products">
+        <f:translate key="product_detail_see_also">Zie ook</f:translate>
+	</div>
+	<ul class="pdc-content pdc-product pdc-related-products">
+		<f:for each="{product.relatedProducts}" as="relatedproduct">
+			<li><f:link.action class="pdc-link-product pdc-link" action="detail" arguments="{product: relatedproduct}">{relatedproduct.name}</f:link.action></li>
+		</f:for>
+	</ul>
+</f:if>
+<f:if condition="{userAuthorisedAndLoggedIn}">
+	<f:if condition="{product.responsibles}">
+		<div class="pdc-subheader pdc-product pdc-responsibles">
+            <f:translate key="product_detail_responsibles">Verantwoordelijken</f:translate>:
+		</div>
+		<ul class="pdc-content pdc-faq pdc-responsibles">
+			<f:for each="{product.responsibles}" as="responsible">
+				<li class="pdc-responsible">
+					{responsible.name}
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+	<f:if condition="{product.authorities}">
+		<div class="pdc-subheader pdc-product pdc-responsibles">
+            <f:translate key="product_detail_authorities">Groepen</f:translate>:
+		</div>
+		<ul class="pdc-content pdc-faq pdc-groups">
+			<f:for each="{product.authorities}" as="authority">
+				<li class="pdc-group">
+					{authority.title}
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+</f:if>
+<f:if condition="{product.contactAddresses}">
+	<div class="pdc-subheader pdc-product pdc-contact">
+        <f:translate key="product_detail_contact">Contact</f:translate>
+	</div>
+	<f:for each="{product.contactAddresses}" as="contactAddress">
+		<div class="pdc-content pdc-product pdc-contact">
+			<f:if condition="{contactAddress.name}"><div class="pdc-faq-contact"><f:translate key="product_detail_name">Naam</f:translate>: {contactAddress.name}</div></f:if>
+			<f:if condition="{contactAddress.address}"><div class="pdc-faq-contact-address"><f:format.nl2br>{contactAddress.address}</f:format.nl2br></div></f:if>
+			<f:if condition="{contactAddress.email}"><div class="pdc-faq-contact-email"><f:translate key="product_detail_address">Adres</f:translate>: <f:link.email email="{contactAddress.email}" /></div></f:if>
+			<f:if condition="{contactAddress.phone}"><div class="pdc-faq-contact-phone"><f:translate key="product_detail_telephone">Telefoon</f:translate>: {contactAddress.phone}</div></f:if>
+			<f:if condition="{contactAddress.fax}"><div class="pdc-faq-contact-fax"><f:translate key="product_detail_fax">Fax</f:translate>: {contactAddress.fax}</div></f:if>
+			<f:if condition="{contactAddress.company}"><div class="pdc-faq-contact-address-company"><f:if condition="{contactAddress.company}">{contactAddress.company}</f:if></div></f:if>
+			<f:if condition="{contactAddress.description}"><div class="pdc-faq-contact-description"><f:format.html>{contactAddress.description}</f:format.html></div></f:if>
+		</div>
+	</f:for>
+</f:if>

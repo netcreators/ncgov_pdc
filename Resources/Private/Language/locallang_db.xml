@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'blogexample'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_ncgovpdc_domain_model_product">Product / dienst</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_general">Algemeen</label>
+			<label index="tx_ncgovpdc_domain_model_product.imported">Gesynchroniseerd met externe leverancier</label>
+			<label index="tx_ncgovpdc_domain_model_product.session_number">Synchronisatie sessie</label>
+			<label index="tx_ncgovpdc_domain_model_product.weight">Sorteergewicht (groter is belangrijker)</label>
+			<label index="tx_ncgovpdc_domain_model_product.name">Naam</label>
+			<label index="tx_ncgovpdc_domain_model_product.owms_core_identifier">Product unique identifier (owms / zaak)</label>
+			<label index="tx_ncgovpdc_domain_model_product.owms_core_modified">Laatst gewijzigd (bij bron)</label>
+			<label index="tx_ncgovpdc_domain_model_product.owms_mantle_abstract">Samenvatting</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_product_id">Product ID</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online">Online aanvragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online.I.0">nee</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online.I.1">ja</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online.I.2">ja, via DigiD</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online_url">URL om online aan te vragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online_single_sign_on">Eenmalig aanmelden (&quot;Single Sign On&quot; bij online aanvragen)</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online_single_sign_on.I.0">nee</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online_single_sign_on.I.1">ja</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_request_online_single_sign_on.I.2">-</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_contact_point">Contactpunt</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_uniform_product_names">Uniforme productnamen</label>
+			<label index="tx_ncgovpdc_domain_model_product.scmeta_related_uniform_product_names">Gerelateerde productnamen</label>
+			<label index="tx_ncgovpdc_domain_model_product.tio_themes">Thema-indelingen volgens Thema-indeling Overheid (TiO)</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields">Ingeladen RTE velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.0">Geen</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.1">Korte beschrijvng, beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.2">Pre- en beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.3">Beschrijving en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.4">Alle beschrijving velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.5">Pre- en Extra info</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.6">Extra info en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.7">Ale extra info velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.8">Pre- en aanvraag informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.9">Aanvraag informatie en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.10">Alle aanvraag informatie velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.11">Pre- en benodigdheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.12">Benodigdheden en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.13">Alle benodigdheden velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.14">Pre- en contact info</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.15">Contact info en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.16">Alle contact info velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.17">Pre- en wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.18">Wettelijke grondslag en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.19">Alle wettelijke grondslag velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.20">Pre- en voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.21">Voorwaarden en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.22">Alle voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.23">Pre- en resultaat</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.24">Resultaat en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.25">Alle resultaat velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.26">Pre- en Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.27">Bezwaar en beroep en post-</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.28">Alle Bezwaar en beroep velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.29">Onderwaterantwoord</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.30">Alle velden (tekst)</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_fields.I.31">Alle velden</label>
+			<label index="tx_ncgovpdc_domain_model_product.type">Type</label>
+			<label index="tx_ncgovpdc_domain_model_product.type.I.0">Product</label>
+			<label index="tx_ncgovpdc_domain_model_product.type.I.1">Dienst</label>
+			<label index="tx_ncgovpdc_domain_model_product.changes">Wijzigingen</label>
+			<label index="tx_ncgovpdc_domain_model_product.desk_memo">Onderwaterantwoord (uitsluitend voor intern gebruik)</label>
+			<label index="tx_ncgovpdc_domain_model_product.costs">Leges</label>
+			<label index="tx_ncgovpdc_domain_model_product.costs_content">Leges (tabel)</label>
+			<label index="tx_ncgovpdc_domain_model_product.turnaround">Doorlooptijd</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_description">Beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.short_description">Korte beschrijving (wordt getoond in lijsten)</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_description">Tekst voor: beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.description">Generieke beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_description">Tekst na: beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_description">Gebruik tekst voor: beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_description">Gebruik generieke beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_description">Gebruik tekst na: beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_apply_info">Aanvragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_apply_info">Tekst voor: hoe aan te vragen tekst</label>
+			<label index="tx_ncgovpdc_domain_model_product.apply_info">Generieke hoe aan te vragen tekst</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_apply_info">Tekst na: hoe aan te vragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_apply_info">Gebruik tekst voor: hoe aan te vragen </label>
+			<label index="tx_ncgovpdc_domain_model_product.use_apply_info">Gebruik tekst: hoe aan te vragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_apply_info">Gebruik tekst na: hoe aan te vragen</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_extra_info">Extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_extra_info">Tekst voor: extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.extra_info">Generieke Extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_extra_info">Tekst na: extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_extra_info">Gebruik tekst voor: extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_extra_info">Gebruik tekst: extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_extra_info">Gebruik tekst na: extra informatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_contact_info">Contact info</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_contact_info">Text voor: contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.contact_info">Generieke Contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_contact_info">Tekst na: contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_contact_info">Gebruik tekst voor: contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_contact_info">Gebruik tekst: contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_contact_info">Gebruik tekst na: contactinformatie</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_required_for_application">Bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_required_for_application">Tekst voor: bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.required_for_application">Generieke bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_required_for_application">Tekst na: bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_required_for_application">Gebruik tekst voor: bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_required_for_application">Gebruik tekst: bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_required_for_application">Gebruik tekst na: bijzonderheden</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_legal_basis">Wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_legal_basis">Tekst voor: wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.legal_basis">Generieke Wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_legal_basis">Tekst na: wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_legal_basis">Gebruik tekst voor: wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_legal_basis">Gebruik tekst: wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_legal_basis">Gebruik tekst na: wettelijke grondslag</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_terms">Voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_terms">Tekst voor: voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.terms">Generieke Voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_terms">Tekst na: voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_terms">Gebruik tekst voor: voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_terms">Gebruik tekst: voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_terms">Gebruik tekst na: voorwaarden</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_result">Resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_result">Tekst voor: resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.result">Generieke Resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_result">Tekst na: resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_result">Gebruik tekst voor: resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_result">Gebruik tekst: Resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_result">Gebruik tekst na: resultaten</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_appeal">Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.pre_appeal">Tekst voor: Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.appeal">Generiek Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.post_appeal">Tekst na: Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_pre_appeal">Gebruik tekst voor: Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_appeal">Gebruik tekst: Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.use_post_appeal">Gebruik tekst na: Bezwaar en beroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_misc">Overig</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_desk_memo">Onderwaterantwoord</label>
+			<label index="tx_ncgovpdc_domain_model_product.image">Afbeelding</label>
+			<label index="tx_ncgovpdc_domain_model_product.responsibles">Verantwoordelijke gebruiker(s) voor dit product</label>
+			<label index="tx_ncgovpdc_domain_model_product.attachments">Bijlagen</label>
+			<label index="tx_ncgovpdc_domain_model_product.related_products">Gerelateerde producten</label>
+			<label index="tx_ncgovpdc_domain_model_product.life_phases">Levensfase</label>
+			<label index="tx_ncgovpdc_domain_model_product.tips">Notities</label>
+			<label index="tx_ncgovpdc_domain_model_product.authorities">Authoriteit (gebruikersgroep)</label>
+			<label index="tx_ncgovpdc_domain_model_product.flexible">Flexibel veld</label>
+			<label index="tx_ncgovpdc_domain_model_product.contact_addresses">Contactadressen</label>
+			<label index="tx_ncgovpdc_domain_model_product.contact_addresses_edit">Bewerken</label>
+			<label index="tx_ncgovpdc_domain_model_product.contact_addresses_new">Toevoegen</label>
+			<label index="tx_ncgovpdc_domain_model_product.synonyms">Synoniemen</label>
+			<label index="tx_ncgovpdc_domain_model_product.synonyms_edit">Bewerken</label>
+			<label index="tx_ncgovpdc_domain_model_product.synonyms_new">Toevoegen</label>
+			<label index="tx_ncgovpdc_domain_model_product.keywords">Zoektermen</label>
+			<label index="tx_ncgovpdc_domain_model_product.keywords_edit">Bewerken</label>
+			<label index="tx_ncgovpdc_domain_model_product.keywords_new">Toevoegen</label>
+			<label index="tx_ncgovpdc_domain_model_product.frequently_asked_questions">Vraag-antwoordcombinaties</label>
+			<label index="tx_ncgovpdc_domain_model_product.frequently_asked_questions_edit">Bewerken</label>
+			<label index="tx_ncgovpdc_domain_model_product.frequently_asked_questions_new">Toevoegen</label>
+			<label index="tx_ncgovpdc_domain_model_product.frequently_asked_question_categories">Vraag-antwoordcombinatie categorie</label>
+			<label index="tx_ncgovpdc_domain_model_product.frequently_asked_question_info">Informatie bij vraag-antwoordcombinaties</label>
+			<label index="tx_ncgovpdc_domain_model_product.tab_links">Links</label>
+			<label index="tx_ncgovpdc_domain_model_product.directive">Werkinstructies</label>
+			<label index="tx_ncgovpdc_domain_model_product.process_description">Proces beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_product.related_regulatory">Wet- en regelgeving</label>
+			<label index="tx_ncgovpdc_domain_model_product.request_form">Aanvraagformulier</label>
+			<label index="tx_ncgovpdc_domain_model_product.audience">Doelgroep</label>
+			<label index="tx_ncgovpdc_domain_model_product.audience.I.0">Ondernemer</label>
+			<label index="tx_ncgovpdc_domain_model_product.audience.I.1">Particulier</label>
+			<label index="tx_ncgovpdc_domain_model_product.reference_laws">Wetten</label>
+			<label index="tx_ncgovpdc_domain_model_product.reference_local_laws">Lokale regelgeving</label>
+			<label index="tx_ncgovpdc_domain_model_product.reference_internal">Interne verwijzingen</label>
+			<label index="tx_ncgovpdc_domain_model_product.reference_external">Externe verwijzingen</label>
+			<label index="tx_ncgovpdc_domain_model_product.reference_forms">Formulieren</label>
+			<label index="tx_ncgovpdc_domain_model_product.link_groups">Call-to-action link groepen</label>
+			<label index="tx_ncgovpdc_domain_model_product.language">Taal</label>
+			<label index="tx_ncgovpdc_domain_model_product.language.I.0">Nederlands</label>
+			<label index="tx_ncgovpdc_domain_model_product.language.I.1">Fries</label>
+			<label index="tx_ncgovpdc_domain_model_product.language.I.2">Engels</label>
+			<label index="tx_ncgovpdc_domain_model_product.language.I.3">Frans</label>
+			<label index="tx_ncgovpdc_domain_model_product.language.I.4">Duits</label>
+			<label index="tx_ncgovpdc_domain_model_product.source">Bron</label>
+			<label index="tx_ncgovpdc_domain_model_product.users_available">Gebruikers voor doorverbinden</label>
+			<label index="tx_ncgovpdc_domain_model_product.maintained_by">Bijgehouden door (backend groep)</label>
+			<label index="tx_ncgovpdc_domain_model_product.custom_label">Eigen label</label>
+			<label index="tx_ncgovpdc_domain_model_product.show_dynamic_content">Toont sidebar</label>
+
+			<!-- frequentlyAskedQuestion -->
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion">Vraag-antwoordcombinatie</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.imported">Geimporteerd vanuit de overheid contentstream (niet wijzigen dan!)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.session_number">Update sessienummer (niet belangrijk voor handmatige invoer)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.weight">Sorteer volgorde in zoekresultaten (hoger is belangrijker)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.tab_owms">Overheid webmetadata</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_title">Titel (de vraag)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_identifier">Unieke identifier</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_language">Taal</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_creator_scheme">Creator scheme</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_creator">Creator</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_modified">Laatst gewijzigd</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_spatial_scheme">Spatial scheme</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_spatial">Spatial waarde</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_temporal_start">Temporal periode start</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_core_temporal_end">Temporal periode eind</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_authority">Authoriteit</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_contributor">Contributor</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_available_start">Beschikbaar periode start</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_available_end">Beschikbaar periode eind</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_audience">Doelgroep</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.owms_mantle_subjects">Themaindeling Overheid</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.priority">Prioriteit</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.priority.I.0">Laag</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.priority.I.1">Medium</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.priority.I.2">Hoog</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.supplier_system">Leverancier systeem</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.editorial_state">Status redactie</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.editorial_state.I.0">Actief</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.editorial_state.I.1">Non-actief</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.verification_date">Datum wanneer VAC gecontroleerd wordt</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.revisions">Historie wijzigingen</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.destinations">Bestemming(en)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.frequently_asked_question_channels">Vraag-antwoordcombinaties per kanaal</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.edit">Bewerk</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.new">Nieuw</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.reference_products">Referentie naar product</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.reference_contact">Referentie naar contact</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.reference_frequently_asked_questions">Referentie naar vraag-antwoordcombinatie</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestion.authorities">Gebruikersgroep die deze vraag mag zien (leeg voor alle)</label>
+
+			<!-- frequentlyAskedQuestionChannel -->
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel">Vraag-antwoordcombinatie per kanaal</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.edit">Bewerk</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.new">Nieuw</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels">Kanaal van toepassing (verplicht)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.0">Generiek</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.1">Balie</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.2">Chat</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.3">E-mail</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.4">Sms</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.5">Telefoon</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.6">Post</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.channels.I.7">Website</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.question">Vraag (maximaal 90 karakters, verplicht)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.short_answer">Kort antwoord (eerste deel, max 650 karakters, verplicht)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.answer">Antwoord (uitgebreid vervolg op antwoord, maximaal 2500 karakters, optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.answer_product_field">Antwoord productveld</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.answer_addresses">Antwoord adressen</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.authorized_answer">Onderwater antwoord (alleen zichtbaar voor ingelogde medewerkers, maximaal 1000 karakters, optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.authorized_answer_product_field">Onderwater antwoord productveld</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.authorized_answer_addresses">Onderwater antwoord adressen</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.reference_other_info">Links naar overige informatie (meerdere bronnen mogelijk)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.reference_contacts">Links naar contact informatie (meerdere bronnen mogelijk)</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.contact_addresses">Contactadressen</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.contact_instance_edit">Bewerken</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestionchannel.contact_instance_new">Toevoegen</label>
+
+			<!-- referenceLink -->
+			<label index="tx_ncgovpdc_domain_model_referencelink">Link</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type">Type link (link naar URL, product, Vraag-antwoordcombinatie, pagina)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type.I.1">Link naar Product</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type.I.2">Link naar Vraag-antwoordcombinatie</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type.I.3">Link naar Pagina</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type.I.4">Link naar URL (voor VAC)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.type.I.5">Link naar URL (voor product)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype">Subtype (wetten, lokale regelgeving, formulieren, intern, extern)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.0">Link</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.1">Wetten</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.2">Lokale regelgeving</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.3">Formulieren</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.4">Interne verwijzing</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.5">Externe verwijzing</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.subtype.I.6">Call to action button</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.imported">Geimporteerd vanuit overheid contentstream?</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.name">Link naam (linktekst, 250 karakters max, optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.title">Link titel (beschrijving voor in alt / title tags, max 250 karakters, optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.resource_identifier">Resource identifier (ID)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.link">Link (URL / TYPO3 pagina, optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.link_product">Link naar product (optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.link_frequently_asked_question">Link naar vraag-antwoordcombinatie (optioneel)</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.link_page">Link naar een TYPO3 pagina</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.description">Beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.is_digid_service">Is digid dienst</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.is_electronic_service">Is electronische dienst</label>
+			<label index="tx_ncgovpdc_domain_model_referencelink.service_url">Dienst url</label>
+
+			<!-- revision -->
+			<label index="tx_ncgovpdc_domain_model_revision">Revisie</label>
+			<label index="tx_ncgovpdc_domain_model_revision.title">Titel</label>
+			<label index="tx_ncgovpdc_domain_model_revision.version">Versie</label>
+			<label index="tx_ncgovpdc_domain_model_revision.date_time">Datum</label>
+			<label index="tx_ncgovpdc_domain_model_revision.author">Auteur</label>
+			<label index="tx_ncgovpdc_domain_model_revision.revision_types">Type wijziging(en)</label>
+			<label index="tx_ncgovpdc_domain_model_revision.revision_types.I.0">Tekst</label>
+			<label index="tx_ncgovpdc_domain_model_revision.revision_types.I.1">Inhoud</label>
+			<label index="tx_ncgovpdc_domain_model_revision.revision_types.I.2">Opmaak</label>
+			<label index="tx_ncgovpdc_domain_model_revision.comment">Toelichting</label>
+
+			<!-- destination -->
+			<label index="tx_ncgovpdc_domain_model_destination">Bestemming</label>
+			<label index="tx_ncgovpdc_domain_model_destination.name">Naam</label>
+
+			<!-- subject -->
+			<label index="tx_ncgovpdc_domain_model_subject">Onderwerp</label>
+			<label index="tx_ncgovpdc_domain_model_subject.imported">Geimporteerd vanuit de overheid contentstream (niet wijzigen dan!)</label>
+			<label index="tx_ncgovpdc_domain_model_subject.subject">Onderwerp</label>
+			<label index="tx_ncgovpdc_domain_model_subject.scheme">Schema</label>
+			<label index="tx_ncgovpdc_domain_model_subject.resource_identifier">Resource identifier</label>
+
+			<!-- frequentlyAskedQuestion category -->
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestioncategory">VAC category</label>
+			<label index="tx_ncgovpdc_domain_model_frequentlyaskedquestioncategory.name">Naam</label>
+
+			<!-- synonym -->
+			<label index="tx_ncgovpdc_domain_model_synonym">Synoniem</label>
+			<label index="tx_ncgovpdc_domain_model_synonym.synonym">Synoniem</label>
+			<label index="tx_ncgovpdc_domain_model_synonym.relates_to">Gerelateerd aan</label>
+
+			<!-- link group -->
+			<label index="tx_ncgovpdc_domain_model_linkgroup">Link groep</label>
+			<label index="tx_ncgovpdc_domain_model_linkgroup.title">Titel</label>
+			<label index="tx_ncgovpdc_domain_model_linkgroup.reference_links">Titel</label>
+
+			<!-- keyword -->
+			<label index="tx_ncgovpdc_domain_model_keyword">Zoekterm</label>
+			<label index="tx_ncgovpdc_domain_model_keyword.keyword">Zoekterm</label>
+
+			<!-- tip -->
+			<label index="tx_ncgovpdc_domain_model_tip">Tip</label>
+			<label index="tx_ncgovpdc_domain_model_tip.name">Naam</label>
+			<label index="tx_ncgovpdc_domain_model_tip.description">Beschrijving</label>
+			<label index="tx_ncgovpdc_domain_model_tip.creator">Auteur</label>
+			<label index="tx_ncgovpdc_domain_model_tip.datetime">Aanmelddatum</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state">Status</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state.I.0">Geen status</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state.I.1">Aangemeld</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state.I.2">In behandeling</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state.I.3">Ter beoordeling voorgelegd</label>
+			<label index="tx_ncgovpdc_domain_model_tip.state.I.4">Goedgekeurd</label>
+
+			<!-- log -->
+			<label index="tx_ncgovpdc_domain_model_log">Log</label>
+			<label index="tx_ncgovpdc_domain_model_log.session">Sessie</label>
+			<label index="tx_ncgovpdc_domain_model_log.message">Bericht</label>
+			<label index="tx_ncgovpdc_domain_model_log.code">Code</label>
+			<label index="tx_ncgovpdc_domain_model_log.log_type">Type</label>
+
+			<!-- registration -->
+			<label index="tx_ncgovpdc_domain_model_registration">Afhandeling</label>
+			<label index="tx_ncgovpdc_domain_model_registration.subject">Onderwerp vraag</label>
+			<label index="tx_ncgovpdc_domain_model_registration.start_time">Begin tijd</label>
+			<label index="tx_ncgovpdc_domain_model_registration.end_time">Eind tijd</label>
+			<label index="tx_ncgovpdc_domain_model_registration.closed">Gesloten</label>
+			<label index="tx_ncgovpdc_domain_model_registration.result">Resultaat</label>
+			<label index="tx_ncgovpdc_domain_model_registration.remark">Opmerkingen</label>
+			<label index="tx_ncgovpdc_domain_model_registration.actions">Handelingen uitgevoerd</label>
+			<label index="tx_ncgovpdc_domain_model_registration.next_registration">Vervolgvraag</label>
+			<label index="tx_ncgovpdc_domain_model_registration.user">Door gebruiker</label>
+
+			<!-- registrationaction -->
+			<label index="tx_ncgovpdc_domain_model_registrationaction">Acties gedaan</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type">Actie</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type.I.0">Product bekeken</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type.I.1">VAC bekeken</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type.I.2">Gezocht naar...</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type.I.3">VAC via zoeken</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.type.I.4">VAC via product</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.product">Product</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.frequently_asked_question">VAC</label>
+			<label index="tx_ncgovpdc_domain_model_registrationaction.search_parameter">Zoekvraag gesteld</label>
+
+			<!-- registrationresult -->
+			<label index="tx_ncgovpdc_domain_model_registrationresult">Afhandeling resultaat</label>
+			<label index="tx_ncgovpdc_domain_model_registrationresult.name">Waarde</label>
+
+			<!-- statistics -->
+			<label index="tx_ncgovpdc_domain_model_statistics">Statistieken</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.type">Actie</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.type.I.0">Product bekeken</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.type.I.1">VAC bekeken</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.product">Product</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.frequently_asked_question">Vac</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.loggedin_count">Aantal bezichtigingen ingelogd</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.count">Totaal aantal bezichtigingen</label>
+			<label index="tx_ncgovpdc_domain_model_statistics.logtime">Registratiemoment</label>
+
+			<!-- advanced theme -->
+			<label index="tx_ncgovpdc_domain_model_advancedtheme">Uitgebreid thema</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.tab_general">Algemeen</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.title">Naam</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.identifier">Unique identifier</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.modified">Gewijzigd</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.session_number">Sessie nummer</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.imported">Geimporteerd</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.keywords">Zoektermen</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.without_context">Zonder context</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.level">Niveau</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.type">Type</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.type.I.1">Type: NcgovPdc</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.parent">Parent</label>
+			<label index="tx_ncgovpdc_domain_model_advancedtheme.related_products">Gerelateerde producten</label>
+
+			<!--  feusers extension -->
+			<label index="fe_users.tx_ncgovpdc_availability_status">Beschikbaarheid</label>
+			<label index="fe_users.tx_ncgovpdc_availability_status.I.0"> -- Onbekend -- </label>
+			<label index="fe_users.tx_ncgovpdc_availability_status.I.1">Beschikbaar</label>
+			<label index="fe_users.tx_ncgovpdc_availability_status.I.2">Onbeschikbaar</label>
+			<label index="fe_users.tx_ncgovpdc_availability_status.I.3">Bezet</label>
+
+			<!--  tt_address extension -->
+			<label index="tt_address.tx_ncgovpdc_post_address">Straat en huisnummer (Post addres)</label>
+			<label index="tt_address.tx_ncgovpdc_post_city">Plaats (Post addres)</label>
+			<label index="tt_address.tx_ncgovpdc_post_zip">Post Code (Post addres)</label>
+			<label index="tt_address.tx_ncgovpdc_post_p_o_box">PO Box</label>
+		</languageKey>
+	</data>
+</T3locallang>

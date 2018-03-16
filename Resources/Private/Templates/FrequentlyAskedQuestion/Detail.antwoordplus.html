@@ -1,0 +1,143 @@
+<!-- tonen:
+	- antwoord
+	- authority
+	- kortantwoord
+	- modified
+	- onderwaterantwoord
+	- subject
+	- verwijzingOverigeInfo
+	- verwijzingVAC
+	- vraag
+-->
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+<f:if condition="{frequentlyAskedQuestionContainer}">
+	<f:for each="{frequentlyAskedQuestionContainer.frequentlyAskedQuestionChannels}" as="frequentlyAskedQuestion">
+		<h1>
+			{frequentlyAskedQuestion.question}
+		</h1>
+		<div class="pdc-content pdc-faq">
+			<f:format.html parseFuncTSPath="">{frequentlyAskedQuestion.shortAnswer}</f:format.html>
+		</div>
+		<div class="pdc-content pdc-faq">
+			<f:format.html parseFuncTSPath="">{frequentlyAskedQuestion.answer}</f:format.html>
+		</div>
+
+		<f:if condition="{frequentlyAskedQuestion.answerAddresses}">
+			<f:for each="{frequentlyAskedQuestion.answerAddresses}" as="answerAddress">
+				<f:render partial="ContactInstance" arguments="{contactInstance: answerAddress}" />
+			</f:for>
+		</f:if>
+		<f:if condition="{userAuthorisedAndLoggedIn}">
+            <f:if condition="{frequentlyAskedQuestion.hasAuthorizedAnswerContent}">
+                <div class="pdc-subheader pdc-faq pdc-underwater-answer">
+                    <f:translate key="faq_underwater_answer">Extra informatie voor medewerker:</f:translate>
+                </div>
+            </f:if>
+            <f:if condition="{frequentlyAskedQuestion.authorizedAnswer}">
+                <div class="pdc-content pdc-faq pdc-underwater-answer">
+                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE_pdc"><pdc:faqContent>{frequentlyAskedQuestion.authorizedAnswer}</pdc:faqContent></f:format.html>
+                </div>
+            </f:if>
+            <f:if condition="{frequentlyAskedQuestion.authorizedAnswerProductField}">
+                <div class="pdc-content pdc-faq pdc-underwater-answerProductField">
+                    <f:format.html parseFuncTSPath="lib.parseFunc_RTE_pdc"><pdc:faqContent>{frequentlyAskedQuestion.authorizedAnswerProductField}</pdc:faqContent></f:format.html>
+                </div>
+            </f:if>
+            <f:if condition="{frequentlyAskedQuestion.authorizedAnswerAddresses}">
+                <f:for each="{frequentlyAskedQuestion.authorizedAnswerAddresses}" as="authorizedAnswerAddress">
+                    <f:render partial="ContactInstance" arguments="{contactInstance: authorizedAnswerAddress}" />
+                </f:for>
+            </f:if>
+        </f:if>
+
+		<f:if condition="{frequentlyAskedQuestion.referenceOtherInfo}">
+			<div class="pdc-subheader pdc-faq pdc-related-links">
+				<f:translate key="faq_related_links">Gerelateerde links:</f:translate>
+			</div>
+			<ul class="pdc-content pdc-faq pdc-related-links">
+				<f:for each="{frequentlyAskedQuestion.referenceOtherInfo}" as="referenceLink">
+					<f:if condition="{referenceLink.isValid}">
+						<li><a class="pdc-link-other pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+					</f:if>
+				</f:for>
+			</ul>
+		</f:if>
+		<f:if condition="{frequentlyAskedQuestion.referenceContacts}">
+			<div class="pdc-subheader pdc-faq pdc-related-contacts">
+				<f:translate key="faq_related_contact_information">Gerelateerde contactinformatie:</f:translate></p>
+			</div>
+			<ul class="pdc-content pdc-faq pdc-related-contacts">
+				<f:for each="{frequentlyAskedQuestion.referenceContacts}" as="referenceLink">
+					<f:if condition="{referenceLink.isValid}">
+						<li><a class="pdc-link-contact pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+					</f:if>
+				</f:for>
+			</ul>
+		</f:if>
+		<f:if condition="{frequentlyAskedQuestion.contactAddresses}">
+			<f:for each="{frequentlyAskedQuestion.contactAddresses}" as="contactAddress">
+				<f:render partial="ContactInstance" arguments="{contactInstance: contactAddress}" />
+			</f:for>
+		</f:if>
+	</f:for>
+	<f:if condition="{hasValidReferenceFrequentlyAskedQuestions}">
+		<div class="pdc-subheader pdc-faq pdc-related-faqs">
+			<f:translate key="faq_related_questions">Gerelateerde vragen:</f:translate>
+		</div>
+		<ul class="pdc-content pdc-faq pdc-related-faqs">
+			<f:for each="{referenceFrequentlyAskedQuestions}" as="referenceLink">
+				<f:if condition="{referenceLink.isValid}">
+					<li><a class="pdc-link-faq pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+				</f:if>
+			</f:for>
+		</ul>
+	</f:if>
+	<f:if condition="{frequentlyAskedQuestionContainer.referenceProducts}">
+		<div class="pdc-subheader pdc-faq pdc-related-products">
+			<h2><f:translate key="faq_related_products">Gerelateerde producten:</f:translate></h2>
+		</div>
+		<ul class="pdc-content pdc-faq pdc-related-products">
+			<f:for each="{frequentlyAskedQuestionContainer.referenceProducts}" as="referenceLink">
+				<f:if condition="{referenceLink.isValid}">
+					<li><a class="pdc-link-faq pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+				</f:if>
+			</f:for>
+		</ul>
+	</f:if>
+	<f:if condition="{frequentlyAskedQuestionContainer.owmsMantleSubjects}">
+		<div class="pdc-subheader pdc-faq pdc-related-subjects">
+			<p><f:translate key="faq_related_themes">Gerelateerde thema's:</f:translate></p>
+		</div>
+		<ul class="pdc-subheader pdc-faq pdc-related-subjects">
+			<f:for each="{frequentlyAskedQuestionContainer.owmsMantleSubjectsWithName}" as="subject">
+				<li class="pdc-faq-theme">
+					{subject.name}
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+	<div class="pdc-footer pdc-faq">
+		<span class="pdc-footer-date pdc-faq"><f:translate key="faq_modified">Bijgewerkt</f:translate>:<f:format.date format="d-m-Y">{frequentlyAskedQuestionContainer.owmsCoreModified}</f:format.date></span>
+	</div>
+	<f:if condition="{product}">
+		<f:link.action class="pdc-link-product pdc-link" pageUid="{settings.pages.productDetailPage}" action="detail" controller="Product" arguments="{product: product}"><f:translate key="faq_back_to_product">Terug naar product</f:translate></f:link.action>
+	</f:if>
+	<script type="text/javascript">
+	//<!-- <![CDATA[
+		jQuery(document).ready(function(){
+			if (jQuery('.content').find('.aplus-link-back').length == 0) {
+				// only send when we are viewing static page
+				var referrer = getReferrer();
+				if(referrer != '') {
+					referrer = '&tx_ncgovpdcaplus_pi[referrer]=' + encodeURIComponent(referrer);
+				}
+				jQuery.ajax({
+					url: ']]>{settings.loketStatisticsPageUrl}<![CDATA[?type=1023&tx_ncgovpdcaplus_pi[id]=]]>{frequentlyAskedQuestionContainer.owmsCoreIdentifier}<![CDATA[&tx_ncgovpdcaplus_pi[contentType]=vac' + referrer,
+					cache: false
+				});
+			}
+		});
+	//]]> -->
+	</script>
+</f:if>

@@ -1,0 +1,38 @@
+# cat=basic; type=string; label=Unieke organisatiecode (5 chars max) voor het genereren van een identifier voor vraag-antwoorcombinaties
+identifierUniqueCode = 00000
+
+# cat=basic; type=string; label=Default creator schema
+defaultCreatorScheme = OVERHEID.Gemeente
+
+# cat=basic; type=string; label=Default creator value
+defaultCreator = Gemeentenaam
+
+# cat=basic; type=string; label=Default spatial schema
+defaultSpatialScheme = OVERHEID:Gemeente
+
+# cat=basic; type=string; label=Default spatial value
+defaultSpatial = Gemeentenaam
+
+# cat=basic; type=string; label=Default authority value
+defaultAuthority = Gemeentenaam
+
+# cat=basic; type=string; label=Default contributor value
+defaultContributor = Gemeentenaam
+
+# cat=basic; type=string; label=Leverancier systeem
+defaultSupplierSystem = TYPO3|gem / Netcreators / ncgov_pdc
+
+# cat=basic; type=boolean; label=Don't show any RTE on load of record
+dontShowAnyRteOnRecordLoad = 0
+
+# cat=basic; type=boolean; label=Ignore showfields (and dontShowAnyRteOnRecordLoad), just show all
+showAllFields = 0
+
+# cat=basic; type=boolean; label=Generic product tekstfields are editable
+genericTextFieldsAreEditable = 0
+
+# cat=basic; type=boolean; label=Enable Product Maintenance Module
+enableProductMaintenanceModule = 0
+
+# cat=basic; type=boolean; label=Enable VAC Synchronizer Module
+enableFrequentlyAskedQuestionSynchronizerModule = 1

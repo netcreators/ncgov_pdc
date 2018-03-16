@@ -1,0 +1,21 @@
+config.tx_extbase {
+
+	persistence.classes {
+
+		Netcreators\NcgovPdc\Domain\Model\Authority {
+			mapping {
+				tableName = fe_groups
+			}
+		}
+
+		Netcreators\NcExtbaseLib\Domain\Model\TtAddress.subclasses {
+			Netcreators\NcgovPdc\Domain\Model\TtAddress = Netcreators\NcgovPdc\Domain\Model\TtAddress
+		}
+		Netcreators\NcgovPdc\Domain\Model\TtAddress {
+			mapping {
+				tableName = tt_address
+			}
+		}
+	}
+
+}

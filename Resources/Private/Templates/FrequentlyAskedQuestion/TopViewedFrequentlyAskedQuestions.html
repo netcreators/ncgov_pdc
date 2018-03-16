@@ -1,0 +1,13 @@
+<f:if condition="{topViewedFrequentlyAskedQuestions}">
+    <ul class="pdc-content pdc-topviewed faq pdc-faq">
+        <f:for each="{topViewedFrequentlyAskedQuestions}" as="faqStatistics">
+            <li>
+                <f:link.action class="pdc-link-faq pdc-link" pageUid="{settings.pages.frequentlyAskedQuestionDetailPage}" controller="" action="detail" arguments="{frequentlyAskedQuestion: faqStatistics.frequentlyAskedQuestion}">{faqStatistics.frequentlyAskedQuestion.owmsCoreTitle}</f:link.action>
+                <f:if condition="{frequentlyAskedQuestionContainer.imported}">
+                    <span class="topviewed-authority">({faqStatistics.frequentlyAskedQuestion.question}, {faqStatistics.frequentlyAskedQuestionContainer.owmsMantleAuthority})</span>
+                </f:if>
+                <span class="topviewed-count">({faqStatistics.count})</span>
+            </li>
+        </f:for>
+    </ul>
+</f:if>

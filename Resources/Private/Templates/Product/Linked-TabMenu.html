@@ -1,0 +1,29 @@
+<ul class="pdc-nav-tabs">
+	<f:if condition="{product.directive}">
+		<f:then>
+			<li><a href="{product.directiveLinkUri}" title="{f:translate(key:'product_detail_working_instructions', default:'Werkinstructie')}"><f:translate key="product_detail_working_instructions">Werkinstructie</f:translate></a></li>
+		</f:then>
+		<f:else>
+			<li class="link-inactive"><f:translate key="product_detail_working_instructions">Werkinstructie</f:translate></li>
+		</f:else>
+	</f:if>
+	<f:if condition="{product.processDescription}">
+		<f:then>
+			<li><a href="{product.processDescriptionLinkUri}" title="{f:translate(key:'product_detail_process_description', default:'Procesbeschrijving')}"><f:translate key="product_detail_process_description">Procesbeschrijving</f:translate></a></li>
+		</f:then>
+		<f:else>
+			<li class="link-inactive"><f:translate key="product_detail_process_description">Procesbeschrijving</f:translate></li>
+		</f:else>
+	</f:if>
+	<f:if condition="{product.source}">
+		<f:then>
+			<li><a href="{product.sourceLinkUri}" title="{f:translate(key:'product_detail_conversation_instruction', default:'Gespreksinstructie')}"><f:translate key="product_detail_conversation_instruction">Gespreksinstructie</f:translate></a></li>
+		</f:then>
+		<f:else>
+			<li class="link-inactive"><f:translate key="product_detail_conversation_instruction">Gespreksinstructie</f:translate></li>
+		</f:else>
+	</f:if>
+	<li>
+		<f:link.action pageUid="{settings.pages.closeRegistrationPage}" controller="Registration" action="registrationStatus"><f:translate key="product_detail_register">Registreren</f:translate></f:link.action>
+	</li>
+</ul>

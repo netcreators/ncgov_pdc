@@ -1,0 +1,46 @@
+
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+
+<f:if condition="{contactInstance}">
+    <div class="pdc-contact-address">
+        <f:if condition="{contactInstance.name}">
+            <h4 class="pdc-contact-address-header">{contactInstance.name}</h4>
+        </f:if>
+        <f:if condition="{contactInstance.hasVisitorsAddress}">
+            <h5 class="pdc-contact-address-header">Bezoekers adres</h5>
+            <div class="pdc-contact-address-block">
+                <div class="pdc-contact-address-field">{contactInstance.address}</div>
+                <div class="pdc-contact-address-field">{contactInstance.zip} {contactInstance.city}</div>
+                <div class="pdc-contact-address-field">{contactInstance.region}</div>
+                <div class="pdc-contact-address-field">{contactInstance.country}</div>
+            </div>
+        </f:if>
+        <f:if condition="{contactInstance.hasPostAddress}">
+            <h5 class="pdc-contact-address-header">Post adres</h5>
+            <div class="pdc-contact-address-block">
+                <div class="pdc-contact-address-field">{contactInstance.txNcgovpdcPostAddress}</div>
+                <div class="pdc-contact-address-field">{contactInstance.txNcgovpdcPostZip} {contactInstance.txNcgovpdcPostCity}</div>
+                <f:if condition="{contactInstance.txNcgovpdcPostPOBox}">
+                    <div class="pdc-contact-address-field">Postbus {contactInstance.txNcgovpdcPostPOBox}</div>
+                </f:if>
+            </div>
+        </f:if>
+        <div class="pdc-contact-address-block">
+            <f:if condition="{contactInstance.phone}">
+                <div class="pdc-contact-address-field">Tel: {contactInstance.phone}</div>
+            </f:if>
+            <f:if condition="{contactInstance.fax}">
+                <div class="pdc-contact-address-field">Fax: {contactInstance.fax}</div>
+            </f:if>
+            <f:if condition="{contactInstance.email}">
+                <div class="pdc-contact-address-field"><a href="mailto:{contactInstance.email}">{contactInstance.email}</a></div>
+            </f:if>
+            <f:if condition="{contactInstance.www}">
+                <div class="pdc-contact-address-field"><a href="{contactInstance.www}">{contactInstance.www}</a></div>
+            </f:if>
+            <f:if condition="{contactInstance.description}">
+                <div class="pdc-contact-address-field">{contactInstance.description}</div>
+            </f:if>
+        </div>
+    </div>
+</f:if>

@@ -1,0 +1,267 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:tab_root_title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+
+					<switchableControllerActions>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions4</numIndex>
+										<numIndex index="1">FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions0</numIndex>
+										<numIndex index="1">Product->azIndex;Product->detail;Product->newTip;Product->createTip;Product->editTip;Product->updateTip;Product->removeTip</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions1</numIndex>
+										<numIndex index="1">Product->topViewedProducts</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions2</numIndex>
+										<numIndex index="1">Product->publishXml</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions9</numIndex>
+										<numIndex index="1">Product->tabMenu</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions10</numIndex>
+										<numIndex index="1">Product->detail</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions3</numIndex>
+										<numIndex index="1">Product->detailForPreconfiguredProduct</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions11</numIndex>
+										<numIndex index="1">FrequentlyAskedQuestion->detail</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions5</numIndex>
+										<numIndex index="1">FrequentlyAskedQuestion->topViewedFrequentlyAskedQuestions</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions7</numIndex>
+										<numIndex index="1">Registration->registrationStatus;Registration->startRegistration;Registration->closeRegistration;Registration->updateRegistrationDone</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions12</numIndex>
+										<numIndex index="1">Product->showRelatedAdvancedThemesForProduct</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:switchableControllerActions13</numIndex>
+										<numIndex index="1">Product->showByScmeta</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+
+					<settings.controllers.Product.detail.useTemplate>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:product_use_template</label>
+							<!-- Used by Product->detail. -->
+							<displayCond>FIELD:switchableControllerActions:IN:Product->detail,Product->azIndex;Product->detail;Product->newTip;Product->createTip;Product->editTip;Product->updateTip;Product->removeTip</displayCond>
+							<config>
+								<type>input</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.Product.detail.useTemplate>
+
+					<settings.controllers.Product.limitResultsToThisAudience>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:product_limit_results_to_this_audience</label>
+							<!-- Used by Product->azIndex. -->
+							<displayCond>FIELD:switchableControllerActions:=:Product->azIndex;Product->detail;Product->newTip;Product->createTip;Product->editTip;Product->updateTip;Product->removeTip</displayCond>
+							<config>
+								<type>select</type>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<items type="array">
+									<numIndex index="0">
+										<numIndex index="0" />
+										<numIndex index="1" />
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:audience_private</numIndex>
+										<numIndex index="1">particulier</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:audience_business</numIndex>
+										<numIndex index="1">ondernemer</numIndex>
+									</numIndex>
+								</items>
+								<selectedListStyle>width:420px</selectedListStyle>
+								<itemListStyle>width:420px</itemListStyle>
+							</config>
+						</TCEforms>
+					</settings.controllers.Product.limitResultsToThisAudience>
+
+					<settings.controllers.Product.detailForPreconfiguredProduct.preconfiguredProduct>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:select_single_product</label>
+							<displayCond>FIELD:switchableControllerActions:=:Product->detailForPreconfiguredProduct</displayCond>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_ncgovpdc_domain_model_product</foreign_table>
+								<foreign_table_where>ORDER BY tx_ncgovpdc_domain_model_product.name</foreign_table_where>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>1</minitems>
+							</config>
+						</TCEforms>
+					</settings.controllers.Product.detailForPreconfiguredProduct.preconfiguredProduct>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.showSingleFrequentlyAskedQuestion>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:show_only_faq_question</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.showSingleFrequentlyAskedQuestion>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.matchExactPhrase>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_display_match_exact_phrase</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.matchExactPhrase>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.matchExactPhrase>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_default_match_exact_phrase</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.matchExactPhrase>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includePrivateResults>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_display_include_private_results</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includePrivateResults>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includePrivateResults>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_default_include_private_results</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includePrivateResults>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includeBusinessResults>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_display_include_business_results</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includeBusinessResults>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includeBusinessResults>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_default_include_business_results</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includeBusinessResults>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includeRemoteProducts>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_display_include_remote_products</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.display.includeRemoteProducts>
+
+					<settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includeRemoteProducts>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:faq_find_default_include_remote_products</label>
+							<!-- Used by FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:=:FrequentlyAskedQuestion->find;FrequentlyAskedQuestion->myQuestionWasNotAnswered;FrequentlyAskedQuestion->detail</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.actions.find.searchOptions.defaultValues.includeRemoteProducts>
+
+					<settings.flexform.registration.disabledForThisInstance>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:registration_disabled_for_this_instance</label>
+							<!-- Used by Base->*. -->
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.flexform.registration.disabledForThisInstance>
+
+					<settings.flexform.statistics.disabledForThisInstance>
+						<TCEforms>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:statistics_disabled_for_this_instance</label>
+							<!-- Used by Base->*. -->
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.flexform.statistics.disabledForThisInstance>
+
+					<settings.controllers.FrequentlyAskedQuestion.showDestinations>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:ncgov_pdc/Resources/Private/Language/locallang_flexform.xml:show_destinations</label>
+							<!-- Used by FrequentlyAskedQuestion->detail and FrequentlyAskedQuestion->find. -->
+							<displayCond>FIELD:switchableControllerActions:IN:Product->detail,FrequentlyAskedQuestion->detail,FrequentlyAskedQuestion->find,FrequentlyAskedQuestion->myQuestionWasNotAnswered,FrequentlyAskedQuestion->detail,Product->detailForPreconfiguredProduct</displayCond>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tx_ncgovpdc_domain_model_destination</allowed>
+								<size>10</size>
+								<maxitems>999</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</settings.controllers.FrequentlyAskedQuestion.showDestinations>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

@@ -1,0 +1,198 @@
+/* pdc: tab navigation ///////////////////////////////////////////////////////*/
+/* nc tab control */
+div.ncel-tabcontrol-container {
+	width: 500px;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+ul.ncel-tabcontrol-tabs {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	top: 1px;
+}
+
+ul.ncel-tabcontrol-tabs a {
+	display: block;
+	min-width: 100px;
+	font-weight: bold;
+	height: 36px;
+	padding: 5px 0 0 10px;
+	text-decoration: none;
+}
+
+ul.ncel-tabcontrol-tabs li {
+	float: left;
+/*	width: 125px;*/
+	margin: 0;
+	padding: 0;
+}
+
+div.ncel-tabcontrol-contents {
+	border-top: 1px solid #CCCCCC;
+	height: 450px;
+	overflow: auto;
+	padding: 10px 0;
+}
+
+div.ncel-tabcontrol-contents div.ncel-tabcontrol-content {
+	width: 90%;
+	min-height: 102%;
+/*	height: 102%;
+	thils will collapse lines in IE 7, don't use
+*/
+	line-height: 1.5em;
+}
+
+/* pdc tabcontrol: making tabs look like tab /////////////////////////////////*/
+/* pdc: making tabs look like tab ////////////////////////////////////////////*/
+ul.ncel-tabcontrol-tabs .ncel-tabcontrol-tab-active a, ul.ncel-tabcontrol-tabs a:hover {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-tablink-active-right.gif") no-repeat scroll right top transparent;
+	color: #333333;
+}
+
+ul.ncel-tabcontrol-tabs li.ncel-tabcontrol-tab-active, ul.ncel-tabcontrol-tabs li:hover {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-tablink-active-left.gif") no-repeat scroll left top transparent;
+}
+
+ul.ncel-tabcontrol-tabs a {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-tablink-inactive-right.gif") no-repeat scroll right top transparent;
+	color: #666666;
+}
+
+ul.ncel-tabcontrol-tabs li {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-tablink-inactive-left.gif") no-repeat scroll left top transparent;
+}
+
+/* pdc: theme styling ////////////////////////////////////////////////////////*/
+
+.pdc-theme-list a {
+	display: block;
+}
+
+.pdc-theme-path {
+	margin-bottom: 10px;
+}
+
+.pdc-theme-path a {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-theme-path-divider.gif") no-repeat scroll right 3px transparent;
+	padding-right: 20px;
+}
+	
+/* pdc: a-z index ////////////////////////////////////////////////////////////*/
+.pdc-az-index a {
+	display: inline;
+	float: left;
+	height: 18px;
+	margin: 0 2px 0 0;
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	width: 18px;
+}
+.pdc-az-index a:hover, .pdc-az-index .pdc-letter-active {
+	background: url("/typo3conf/ext/ncgov_pdc/Resources/Public/Images/pdc-az-index-letter-higlight.gif") no-repeat scroll left top transparent;
+}
+.pdc-letter.pdc-product.pdc-letter-noProducts a {
+    color: #999;
+    cursor: default;
+}
+ul.pdc-az-index  {
+	list-style: none outside none;
+}
+
+ul.pdc-az-index , .pdc-az-index li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.pdc-az-index li {
+	margin-bottom: 10px;
+}
+.pdc-az-index {
+	clear: both;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	padding: 10px 0;
+	width: 525px;
+}
+
+/* pdc: search form //////////////////////////////////////////////////////////*/
+
+.pdc-search-form .pdc-search-word {
+	float: left;
+	display: inline;
+	margin-right: 10px;
+}
+.pdc-search-form .submit {
+	display: block;
+	clear: right;
+	margin-bottom: 10px;
+}
+
+.pdc-search-form input.check {
+	float: left;
+	display: inline;
+}
+.pdc-search-form label {
+	clear: right;
+	display: block;
+	float: none;
+	width: 200px;
+}
+
+/* pdc: generic elements /////////////////////////////////////////////////////*/
+
+.pdc-subheader {
+	font-weight: bolder;
+}
+.pdc-product-results {
+	margin-bottom: 1em;
+}
+
+/* pdc: list of links ///////////////////////////////////////////////////////*/
+
+.pdc-product-links a {
+	display: block;	
+}
+
+/* pdcx: list of links ///////////////////////////////////////////////////////*/
+.pdc-faq-results a {
+	display: block;	
+}
+.pdc-theme-sub-navigation a {
+	display: block;	
+}
+.pdc-theme-results a {
+	display: block;	
+}
+.pdc-product-results a {
+	display: block;
+}
+a.pdc-product-result-read-on {
+	display: inline;
+}
+
+
+.pdc-product-results .pdc-link {
+    list-style-position: outside;
+    margin-top: 0.2em;
+}
+.pdc-faqs-for-theme, .pdc-products-for-theme {
+    margin-top: 1em;
+}
+
+.pdc-product-abstract {
+    display: inline-block;
+    padding-left: 2em;
+}
+
+.pdc-contact-address-block {
+    margin-bottom: 1.5em;
+}

@@ -1,0 +1,29 @@
+<ul class="pdc-nav-tabs">
+    <f:if condition="{product.usePreContactInfo}">
+        <f:then>
+            <li><f:link.action pageUid="{settings.pages.productDetailPageWorkingInstructions}" controller="Product" action="detail" arguments="{product: product}" title="{f:translate(key:'product_detail_working_instructions', default:'Werkinstructie')}"><f:translate key="product_detail_working_instructions">Werkinstructie</f:translate></f:link.action></li>
+        </f:then>
+        <f:else>
+            <li class="link-inactive"><f:translate key="product_detail_working_instructions">Werkinstructie</f:translate></li>
+        </f:else>
+    </f:if>
+    <f:if condition="{product.usePostContactInfo}">
+        <f:then>
+            <li><f:link.action pageUid="{settings.pages.productDetailPageProcessDescription}" controller="Product" action="detail" arguments="{product: product}" title="{f:translate(key:'product_detail_process_description', default:'Procesbeschrijving')}"><f:translate key="product_detail_process_description">Procesbeschrijving</f:translate></f:link.action></li>
+        </f:then>
+        <f:else>
+            <li class="link-inactive"><f:translate key="product_detail_process_description">Procesbeschrijving</f:translate></li>
+        </f:else>
+    </f:if>
+    <f:if condition="{product.usePostExtraInfo}">
+        <f:then>
+            <li><f:link.action pageUid="{settings.pages.productDetailPageConversationInstruction}" controller="Product" action="detail" arguments="{product: product}" title="{f:translate(key:'product_detail_conversation_instruction', default:'Gespreksinstructie')}"><f:translate key="product_detail_conversation_instruction">Gespreksinstructie</f:translate></f:link.action></li>
+        </f:then>
+        <f:else>
+            <li class="link-inactive"><f:translate key="product_detail_conversation_instruction">Gespreksinstructie</f:translate></li>
+        </f:else>
+    </f:if>
+    <li class="pdc-register-link">
+        <f:link.action pageUid="{settings.pages.closeRegistrationPage}" controller="Registration" action="registrationStatus"><f:translate key="product_detail_register">Registreren</f:translate></f:link.action>
+    </li>
+</ul>

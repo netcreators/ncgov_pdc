@@ -1,0 +1,6 @@
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+<f:if condition="{product}">
+<f:link.action class="pdc-link-product pdc-link" pageUid="{settings.pages.productDetailPage}" arguments="{product: product}">
+	<pdc:faqContent><f:format.html>{product.name}</f:format.html></pdc:faqContent>
+</f:link.action>
+</f:if>

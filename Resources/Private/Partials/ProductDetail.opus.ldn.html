@@ -1,0 +1,267 @@
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+
+<f:if condition="{product}">
+<f:then>
+
+<div class="csc-header csc-header-n2">
+    <h2>{product.name}</h2>
+</div>
+
+<f:if condition="{product.shortDescription}">
+    <div id="pdcsamenvatting">
+        <h3><f:translate key="product_detail_summary">Samenvatting</f:translate></h3>
+        <div class="pdc-product-detail-shortdescription">
+            <lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.shortDescription}</lib:replaceContent>
+        </div>
+    </div>
+</f:if>
+
+<lib:tabControl>
+<lib:tabControl.tab tabClass="tab-beschrijving" condition="{product.hasFullDescription}" label="{f:translate(key:'product_detail_description', default:'Beschrijving')}">
+    <h3><f:translate key="product_detail_description">Beschrijving</f:translate></h3>
+    <div class="pdc-product-detail-fulldescription">
+        <f:if condition="{product.image}">
+            <div class="pdc-product-detail-image"><f:image src="{product.image}" maxWidth="{maxWidth}" maxHeight="{maxHeight}" alt="Product image" /></div>
+        </f:if>
+        <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullDescription}</lib:replaceContent></f:format.html>
+    </div>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-voorwaarden" condition="{product.hasFullTerms}" label="{f:translate(key:'product_detail_terms', default:'Voorwaarden')}">
+    <h3><f:translate key="product_detail_terms">Voorwaarden</f:translate></h3>
+    <div class="pdc-product-detail-fullterms">
+        <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullTerms}</lib:replaceContent></f:format.html>
+    </div>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-aanpak" condition="{combinedProperties.request}" label="{f:translate(key:'product_detail_application', default:'Aanvragen')}">
+    <h3><f:translate key="product_detail_application">Aanvragen</f:translate></h3>
+    <div class="pdc-product-detail-fullapplyinfo">
+        <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullApplyInfo}</lib:replaceContent></f:format.html>
+    </div>
+    <f:if condition="{product.referenceForms}">
+        <div class="pdc-subheader pdc-product pdc-detail-forms">
+            <h4><f:translate key="product_detail_forms">Formulieren</f:translate></h4>
+        </div>
+        <ul class="pdc-content pdc-product pdc-product-detail-forms">
+            <f:for each="{product.referenceForms}" as="referenceLink">
+                <f:if condition="{referenceLink.isValid}">
+                    <f:if condition="{referenceLink.isDigidService}">
+                        <f:then>
+                            <li class="digid">
+                                <a class="pdc-link-form pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name} (DigiD)</a>
+                                <f:if condition="{referenceLink.description}">
+                                    <div>{referenceLink.description}</div>
+                                </f:if>
+                            </li>
+                        </f:then>
+                        <f:else>
+                            <li>
+                                <a class="pdc-link-form pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a>
+                                <f:if condition="{referenceLink.description}">
+                                    <div>{referenceLink.description}</div>
+                                </f:if>
+                            </li>
+                        </f:else>
+                    </f:if>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-meenemen" condition="{product.hasFullRequiredForApplication}" label="{f:if(condition: product.imported, then: 'Meenemen', else: 'Bijzonderheden')}">
+    <f:if condition="{product.imported}">
+        <f:then>
+            <h3><f:translate key="product_detail_application_requirements">Meenemen</f:translate></h3>
+        </f:then>
+        <f:else>
+            <h3><f:translate key="product_detail_details">Bijzonderheden</f:translate></h3>
+        </f:else>
+    </f:if>
+    <div class="pdc-product-detail-fullrequiredforapp">
+        <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullRequiredForApplication}</lib:replaceContent></f:format.html>
+    </div>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-wetgeving" condition="{product.hasFullLegalBasis}" label="{f:if(condition: product.imported, then: 'Kosten', else: 'Wetgeving')}">
+    <f:if condition="{product.imported}">
+        <f:then>
+            <h3><f:translate key="product_detail_costs">Kosten</f:translate></h3>
+        </f:then>
+        <f:else>
+            <h3><f:translate key="product_detail_legislation">Wetgeving</f:translate></h3>
+        </f:else>
+    </f:if>
+    <div class="pdc-product-detail-fulllegalbasis">
+        <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullLegalBasis}</lib:replaceContent></f:format.html>
+    </div>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-kosten" condition="{product.costsContent}" label="{f:translate(key:'product_detail_costs', default:'Kosten')}">
+    <h3><f:translate key="product_detail_costs">Kosten</f:translate></h3>
+    <f:for each="{product.costsContent}" as="cost">
+        <f:format.html>{cost}</f:format.html>
+    </f:for>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-meer" condition="{combinedProperties.other}" label="{f:translate(key:'product_detail_extra_product_info', default:'Meer')}">
+    <h3><f:translate key="product_detail_more">Meer...</f:translate></h3>
+    <f:if condition="{product.useExtraInfo}">
+        <div id="pdcmeerinformatie">
+            <h4><f:translate key="product_detail_background">Achtergrond</f:translate></h4>
+            <div class="pdc-product-detail-fullextrainfo">
+                <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.extraInfo}</lib:replaceContent></f:format.html>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{product.referenceExternal}">
+        <div class="pdc-subheader pdc-product pdc-detail-external">
+            <h4><f:translate key="product_detail_references">Verwijzingen</f:translate></h4>
+        </div>
+        <ul class="pdc-content pdc-product pdc-product-detail-external">
+            <f:for each="{product.referenceExternal}" as="referenceLink">
+                <f:if condition="{referenceLink.isValid}">
+                    <li><a class="pdc-link-law pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.referenceLaws}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_legislation">Wetgeving</f:translate></h4>
+        </div>
+        <ul class="pdc-product-detail-fulllegalbasis">
+            <f:for each="{product.referenceLaws}" as="referenceLink">
+                <f:if condition="{referenceLink.isValid}">
+                    <li><a href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.referenceLocalLaws}">
+        <div class="pdc-subheader pdc-product pdc-detail-local-laws">
+            <h4><f:translate key="product_detail_local_legislation">Lokale regelgeving</f:translate></h4>
+        </div>
+        <ul class="pdc-content pdc-product pdc-product-detail-local-laws">
+            <f:for each="{product.referenceLocalLaws}" as="referenceLink">
+                <f:if condition="{referenceLink.isValid}">
+                    <li><a class="pdc-link-local-law pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.hasFullContactInfo}">
+        <f:if condition="{product.imported}">
+            <div class="pdc-subheader pdc-product pdc-detail-internal">
+                <h4><f:translate key="product_detail_tips">Tips</f:translate></h4>
+            </div>
+            <div class="pdc-product-detail-fulltips">
+                <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.fullContactInfo}</lib:replaceContent></f:format.html>
+            </div>
+        </f:if>
+    </f:if>
+    <f:if condition="{product.attachments}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_attachments">Bijlagen</f:translate></h4>
+        </div>
+        <ul>
+            <f:for each="{product.attachments}" as="attachment">
+                <li>
+                    <a href="{attachment.url}">{attachment.name}</a>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+    <f:if condition="{product.relatedRegulatory}">
+        <div class="pdc-product-detail-related_requlatory">
+            <h5><f:translate key="product_detail_related_requlatory">Wettelijke grondslag</f:translate></h5>
+            <p><a href="{product.relatedRegulatoryLinkUri}" title="{product.relatedRegulatoryLinkTitle}">Bekijk wettelijke grondslag<!--{product.relatedRegulatoryLinkName}--></a></p>
+        </div>
+    </f:if>
+</lib:tabControl.tab>
+<lib:tabControl.tab tabClass="tab-kcc" condition="{userIsLoggedIn}" label="KCC">
+    <h3>KCC</h3>
+    <f:if condition="{product.usePreResult}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_internal_contact_details">Interne contactgegevens</f:translate></h4>
+        </div>
+        <div class="pdc-product-detail-workinginstructions">
+            <f:format.html parseFuncTSPath="">{product.preResult}</f:format.html>
+        </div>
+    </f:if>
+    <f:if condition="{product.usePostResult}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_working_instructions">Werkinstructies</f:translate></h4>
+        </div>
+        <div class="pdc-product-detail-workinginstructions">
+            <f:format.html parseFuncTSPath="">{product.postResult}</f:format.html>
+        </div>
+    </f:if>
+    <f:if condition="{product.imported}">
+        <f:then>
+        </f:then>
+        <f:else>
+            <f:if condition="{product.usePostExtraInfo}">
+                <div class="pdc-subheader pdc-product pdc-detail-internal">
+                    <h4><f:translate key="product_detail_working_instructions">Werkinstructies</f:translate></h4>
+                </div>
+                <div class="pdc-product-detail-fullextrainfo">
+                    <f:format.html><lib:replaceContent searchExpression="{settings.replaceContent.headers.searchExpression}" wrapOrReplace="{settings.replaceContent.headers.wrap}">{product.postExtraInfo}</lib:replaceContent></f:format.html>
+                </div>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{product.referenceInternal}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_internal_references">Verwijzingen (intern)</f:translate></h4>
+        </div>
+        <ul class="pdc-content pdc-product pdc-product-detail-internal">
+            <f:for each="{product.referenceInternal}" as="referenceLink">
+                <f:if condition="{referenceLink.isValid}">
+                    <li><a class="pdc-link-law pdc-link" href="{referenceLink.linkUri}" title="{referenceLink.title}">{referenceLink.name}</a></li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:if>
+    <div class="pdc-subheader pdc-product pdc-detail-internal">
+        <h4><f:translate key="product_detail_tips">Gebruikersnotities</f:translate></h4>
+    </div>
+    <ul>
+        <f:if condition="{product.tips}">
+            <f:for each="{product.tips}" as="tip">
+                <li>
+                    <f:translate key="product_detail_by">Door</f:translate> {tip.creatorName}<br />
+                    {tip.name}<br />
+                    {tip.description}<br />
+                    <f:link.action pageUid="{settings.pages.productTips}" action="editTip" arguments="{product: product, tip: tip}"><f:translate key="tip_edit">Bewerk</f:translate></f:link.action>
+                    <f:link.action pageUid="{settings.pages.productTips}" action="removeTip" arguments="{product: product, tip: tip}"><f:translate key="tip_remove">Verwijder</f:translate></f:link.action>
+                </li>
+            </f:for>
+        </f:if>
+        <li class="new_product_tip">
+            <f:link.action pageUid="{settings.pages.productTips}" action="newTip" noCacheHash="1" arguments="{product: product}">Voeg een notitie toe</f:link.action>
+        </li>
+    </ul>
+    <f:if condition="{product.changes}">
+        <div class="pdc-subheader pdc-product pdc-detail-internal">
+            <h4><f:translate key="product_detail_changes">Wijzigingen</f:translate></h4>
+        </div>
+        <f:format.html>{product.changes}</f:format.html>
+    </f:if>
+    <f:if condition="{product.authorities}">
+        <h4><f:translate key="product_detail_groups">Groepen</f:translate></h4>
+        <ul>
+            <f:for each="{product.authorities}" as="authority">
+                <li>
+                    {authority.title}
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+</lib:tabControl.tab>
+</lib:tabControl>
+<f:if condition="{product.owmsCoreModified}">
+    <div class="pdc-product-detail-lastmodified">
+        <f:translate key="modified">Bijgewerkt</f:translate>: <f:format.date format="d-m-Y">{product.owmsCoreModified}</f:format.date>
+    </div>
+</f:if>
+
+</f:then>
+<f:else><f:translate key="product_detail_product_not_found">Product niet gevonden.</f:translate></f:else>
+</f:if>

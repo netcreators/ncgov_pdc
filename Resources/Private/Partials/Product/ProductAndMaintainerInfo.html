@@ -1,0 +1,126 @@
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+
+<tr class="{oddOrEven}">
+	<td>
+		<div class="date">
+			<f:format.date format="d-m-Y">{product.owmsCoreModified}</f:format.date>
+		</div>
+	</td>
+	<td>
+		<div class="name">
+			<f:format.html>{product.name}</f:format.html>
+			<span class="icon-wrap">
+				<a title="bewerk record {product.name}"
+				   href="alt_doc.php?returnUrl={lib:urlEncode(value: '{f:uri.action(action: productMaintainerOverview)}')}&edit[tx_ncgovpdc_domain_model_product][{product.uid}]=edit">
+					<i class="icon icon-edit"></i>
+				</a>
+			</span>
+			<span class="icon-wrap">
+				<f:if condition="{settings.useRealUrl}">
+					<f:then>
+						<f:if condition="{pdc:realUrlAlias(uid: product.uid)}">
+							<f:then>
+								<a title="view {product.name}" target="products"
+								   href="{settings.frontendViewPageRealUrl}{pdc:realUrlAlias(uid: product.uid)}/">
+									<i class="icon icon-view"></i>
+								</a>
+							</f:then>
+							<f:else>
+								<a title="view {product.name}" target="products"
+								   href="{settings.frontendViewPageNormal}&tx_ncgovpdc_pi[product]={product.uid}">
+									<i class="icon icon-view"></i>
+								</a>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<a title="view {product.name}" target="products"
+						   href="{settings.frontendViewPageNormal}&tx_ncgovpdc_pi[product]={product.uid}">
+							<i class="icon icon-view"></i>
+						</a>
+					</f:else>
+				</f:if>
+			</span>
+		</div>
+	</td>
+	<td>
+		<div class="editors">
+			<f:if condition="{product.maintainedBy}">
+				<p>
+					<strong>Beheerders</strong>
+				</p>
+				<ul>
+					<f:for each="{product.maintainedBy}" as="userGroup">
+						<f:for each="{userGroup.backendUsers}" as="backendUser">
+							<li>
+								{backendUser.username} <f:if condition="{backendUser.realName}{backendUser.email}">({backendUser.realname}, {backendUser.email})</f:if>
+							</li>
+						</f:for>
+					</f:for>
+				</ul>
+			</f:if>
+		</div>
+	</td>
+</tr>
+<tr class="product-status-row {oddOrEven}">
+	<td class="add-separator">
+	</td>
+	<td class="add-separator">
+		<div class="tips">
+			<f:if condition="{product.notApprovedTipCount}">
+				<f:then>
+					<i class="icon icon-error"></i> Openstaande meldingen
+				</f:then>
+				<f:else>
+					<f:if condition="{product.tipCount} > 0">
+						<f:then>
+							<i class="icon icon-ok"></i> Goedgekeurd
+						</f:then>
+						<f:else>
+							<i class="icon icon-warning"></i> Niet gecontroleerd
+						</f:else>
+					</f:if>
+				</f:else>
+			</f:if>
+		</div>
+	</td>
+	<td class="add-separator">
+		<div class="tips">
+			<p>
+				<strong>Meldingen</strong>
+				<span class="icon-wrap">
+					<a title="nieuwe melding registreren voor {product.name}"
+					   href="wizard_add.php?&P[params][table]=tx_ncgovpdc_domain_model_tip&P[params][pid]={settings.newTipPid}&P[params][setValue]=append&P[exampleImg]=&P[table]=tx_ncgovpdc_domain_model_product&P[uid]={product.uid}&P[pid]={product.pid}&P[field]=tips&P[flexFormPath]=&P[md5ID]=ID5101cba35b&P[returnUrl]={lib:urlEncode(value: '{f:uri.action(action: productMaintainerOverview)}')}">
+						<i class="icon icon-add"></i>
+					</a>
+				</span>
+			</p>
+			<f:if condition="{product.notApprovedTipCount}">
+				<ul>
+					<f:for each="{product.tips}" as="tip">
+						<f:if condition="{tip.isNotApproved}">
+							<li>
+								<strong>{tip.name}</strong> <span
+									class="icon-wrap"><a title="bewerk status {product.name}: {tip.name}"
+														 href="alt_doc.php?returnUrl={lib:urlEncode(value: '{f:uri.action(action: productMaintainerOverview)}')}&edit[tx_ncgovpdc_domain_model_tip][{tip.uid}]=edit"><i
+									class="icon icon-edit"></i></a></span>
+								<p>Status: <f:render partial="Product/TipState{tip.state}" />,
+									meldingsdatum:
+									<f:if condition="{tip.dateTime}">
+										<f:then>
+											<f:format.date format="d-m-Y">{tip.datetime}</f:format.date>
+										</f:then>
+										<f:else>
+											onbekend
+										</f:else>
+									</f:if>
+								</p>
+							</li>
+						</f:if>
+					</f:for>
+				</ul>
+			</f:if>
+		</div>
+	</td>
+</tr>

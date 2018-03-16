@@ -1,0 +1,65 @@
+<?php
+/***************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2009-2010 Frans van der Veen [Netcreators] <extensions@netcreators.com>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+namespace Netcreators\NcgovPdc\Configuration\Exception;
+
+/**
+ * A generic Configuration Exception
+ *
+ * @package NcgovPdc
+ */
+class NoSuchKeyException extends \Netcreators\NcgovPdc\Configuration\Exception
+{
+
+    private $key = '';
+
+    /**
+     * @param string $key
+     * @param string $message
+     * @param int $code
+     * @param null $previous
+     */
+    public function __construct($key, $message = '', $code = 0, $previous = null)
+    {
+        parent::__construct($message, $code);
+        $this->key = $key;
+        $this->updateMessage();
+    }
+
+    public function setKey($key)
+    {
+        $this->key = $key;
+        $this->updateMessage();
+    }
+
+    private function updateMessage()
+    {
+        $this->message = sprintf(
+            'Error: Configuration key "%s" does not exist, you should define it first (so it will always have a valid default value).',
+            $this->key
+        );
+    }
+
+}
+

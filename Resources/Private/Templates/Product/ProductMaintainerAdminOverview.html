@@ -1,0 +1,50 @@
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+<f:layout name="Backend/Default" />
+
+<f:section name="iconButtons">
+</f:section>
+
+<div class="pdc-content pdc-product pdc-click-letter">
+    <f:translate key="product_azindex_choose_letter">Klik een letter aan om een overzicht te krijgen van producten die beginnen met die letter:</f:translate>
+</div>
+<ul class="pdc-az-index pdc-product pdc-letters pdc-az-content-list">
+    <f:for each="{letters}" as="letter">
+        <f:if condition="{letter.active}">
+            <f:then>
+                <li class="pdc-letter pdc-product pdc-letter-active">
+                    <f:link.action class="pdc-link-letter pdc-link pdc-letter-active" pageUid="{settings.pages.productAZIndexPage}" arguments="{letter : letter.firstletterLC}">{letter.firstletter}</f:link.action>
+                </li>
+            </f:then>
+            <f:else>
+                <li class="pdc-letter pdc-product{f:if(condition: '{letter.count} == 0', then: ' pdc-letter-noProducts', else: '')}">
+                    <f:link.action class="pdc-link-letter pdc-link" pageUid="{settings.pages.productAZIndexPage}" arguments="{letter : letter.firstletterLC}">{letter.firstletter}</f:link.action>
+                </li>
+            </f:else>
+        </f:if>
+    </f:for>
+</ul>
+
+<f:section name="content">
+    <f:flashmessages />
+	<h1>Product statusoverzicht</h1>
+
+	<f:if condition="{products}">
+        <f:then>
+            <h2>{productCount} producten gevonden</h2>
+            <table class="product-table">
+                <f:render partial="Product/ProductAndMaintainerInfoHeader"/>
+                <f:for each="{products}" as="product">
+                    <f:cycle values="{0: 'odd', 1: 'even'}" as="oddOrEven">
+                        <f:render partial="Product/ProductAndMaintainerInfo"
+                                  arguments="{product: product, oddOrEven: oddOrEven, settings: settings}"/>
+                    </f:cycle>
+                </f:for>
+            </table>
+        </f:then>
+        <f:else>
+            <h2>Kies een productmap</h2>
+            <p>Selecteer aan de linkerkant in de page tree een map die producten bevat.</p>
+        </f:else>
+	</f:if>
+</f:section>

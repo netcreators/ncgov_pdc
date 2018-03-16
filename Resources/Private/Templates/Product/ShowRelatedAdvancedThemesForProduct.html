@@ -1,0 +1,23 @@
+{namespace pdc=Netcreators\NcgovPdc\ViewHelpers}
+{namespace lib=Netcreators\NcExtbaseLib\ViewHelpers}
+
+<f:if condition="{relatedAdvancedThemes}">
+    <ul class="pdc-content pdc-themes pdc-theme-sub-navigation">
+        <f:for each="{relatedAdvancedThemes}" as="advancedTheme">
+            <f:if condition="{advancedTheme.children}">
+                <f:then>
+                    <li>
+                        <f:link.action pageUid="{settings.pages.advancedThemeDetailPage}" class="pdc-link-theme pdc-link" extensionName="ncgovpdcx" pluginName="pi" controller="AdvancedTheme" action="showLayeredAdvancedThemes" arguments="{advancedTheme: advancedTheme}">{advancedTheme.title}</f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <f:if condition="{advancedTheme.relatedProducts}">
+                        <li>
+                            <f:link.action pageUid="{settings.pages.advancedThemeDetailPage}" class="pdc-link-theme pdc-link" extensionName="ncgovpdcx" pluginName="pi" controller="AdvancedTheme" action="showLayeredAdvancedThemes" arguments="{advancedTheme: advancedTheme}">{advancedTheme.title}</f:link.action>
+                        </li>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </f:for>
+    </ul>
+</f:if>

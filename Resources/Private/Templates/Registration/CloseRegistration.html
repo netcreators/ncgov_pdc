@@ -1,0 +1,16 @@
+<f:if condition="{registrationTrackingAllowed}">
+	<f:if condition="{registrationIsRunning}">
+		<div class="pdc_registration">Registration</div>
+		<f:form method="post" action="updateRegistrationDone" name="registrationClosingForm">
+			<f:translate key="registration_status_busy">Kies resultaat:</f:translate>
+			<f:form.select name="result" options="{registrationResults}" optionValueField="uid" optionLabelField="name" /><br />
+			<f:translate key="registration_status_busy">Opmerking:</f:translate>
+			<f:form.textarea name="remark" rows="8" cols="46" /><br />
+			<f:form.submit name="send" value="Afhandeling sluiten" />
+		</f:form>
+	</f:if>
+	<f:if condition="{registrationClosed}">
+		<div class="pdc_registration">Registration</div>
+		<div class="pdc_registration_closed">De registratie is afgesloten. Duur van deze afhandeling: {time}</div>
+	</f:if>
+</f:if>

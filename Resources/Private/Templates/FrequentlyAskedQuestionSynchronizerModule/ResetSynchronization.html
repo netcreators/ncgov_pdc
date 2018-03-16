@@ -1,0 +1,39 @@
+
+<f:comment>This is a copy of EXT:nc_extbase_lib/Resources/Private/Templates/BaseSynchronizerModule/ResetSynchronization.html</f:comment>
+
+<f:layout name="Backend/Default" />
+
+<f:section name="iconButtons">
+</f:section>
+
+<f:section name="content">
+    <f:flashMessages />
+    <h1>Resetten {synchronizerName} synchronisation status</h1>
+    <f:if condition="{state}">
+        <h2>Herstarten synchronisatie?</h2>
+
+        <div>Deze taak zal worden herstart, bevestig hieronder.</div>
+        <div>Let op: doe dit alleen als de taak is vastgelopen of er een goede reden is de taak te herstarten.</div>
+        <f:if condition="{state.sequenceStarted}">
+            <f:then>
+                <div>Status: Actief</div>
+                <div>Actieve taak: {state.activeTask}</div>
+            </f:then>
+            <f:else>
+                <div>Status: Inactief</div>
+                <f:if condition="{state.forceStart}">
+                    <f:then>
+                        <div>Gaat zsm beginnen.</div>
+                    </f:then>
+                    <f:else>
+                        <div>Idle.</div>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+        <div>
+            <f:link.action action="resetSynchronization" arguments="{confirmed: '1'}">Reset de synchronisatie</f:link.action>
+        </div>
+    </f:if>
+
+</f:section>

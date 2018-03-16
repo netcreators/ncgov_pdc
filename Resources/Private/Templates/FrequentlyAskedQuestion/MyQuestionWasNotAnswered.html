@@ -1,0 +1,18 @@
+<div class="csc-header csc-header-n1 pdc-faq-noanswer"><h1 class="csc-firstHeader"><f:translate key="faq_knowledge_base_question_not_answered">Kennisbank: mijn vraag is niet beantwoord</f:translate></h1></div>
+
+<f:form method="post" controller="FrequentlyAskedQuestion" action="find" name="searchForm">
+	<translate key="faq_searchAgain">Opnieuw zoeken:</translate><br />
+	<f:form.textfield name="search" value="{search}" /><br />
+	<f:form.checkbox name="matchExactPhrase" value="1" checked="{matchExactPhrase}" /><translate key="faq_match_exact_phrase">Zoek naar complete zin</translate><br />
+	
+	<f:form.submit value="Zoek" />
+</f:form>
+
+<f:if condition="{loggedInAndAuthorised}">
+	<f:then>
+		<f:translate key="faq_add_a_question">vraag toevoegen</f:translate>
+	</f:then>
+	<f:else>
+		<p><f:format.html>{contentMyQuestionWasNotAnswered}</f:format.html></p>	
+	</f:else>
+</f:if>

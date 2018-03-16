@@ -1,0 +1,34 @@
+<f:be.container includeCssFiles="{0:'../typo3conf/ext/ncgov_pdc/Resources/Public/Css/backend.css'}">
+	<div class="typo3-fullDoc">
+		<div id="typo3-docheader">
+			<div id="typo3-docheader-row1">
+				<div class="buttonsleft">
+					<f:render section="iconButtons" />
+				</div>
+				<div class="buttonsright">
+					<f:be.buttons.shortcut />
+				</div>
+			</div>
+			<div id="typo3-docheader-row2">
+				<div class="docheader-row2-left">
+					<f:be.buttons.csh />
+				</div>
+				<div class="docheader-row2-right">
+					<f:if condition="{actionMenuItems}">
+						<f:be.menus.actionMenu>
+							<f:for each="{actionMenuItems}" as="actionMenuItem">
+								<f:be.menus.actionMenuItem label="{actionMenuItem.label}" controller="{actionMenuItem.controller}" action="{actionMenuItem.action}" arguments="{actionMenuItem.arguments}" />
+							</f:for>
+						</f:be.menus.actionMenu>
+					</f:if>
+				</div>
+			</div>
+		</div>
+		<div id="typo3-docbody">
+			<div id="typo3-inner-docbody" class="m_pdc m_backend">
+				<f:flashMessages renderMode="div" />
+				<f:render section="content" />
+			</div>
+		</div>
+	</div>
+</f:be.container>

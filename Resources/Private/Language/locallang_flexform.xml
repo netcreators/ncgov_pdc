@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>flexform</type>
+		<description>Language labels for the flexform for the ncgovpdc extension</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="switchableControllerActions4">Producten / VACs: Zoeken</label>
+			<label index="switchableControllerActions0">Producten: A-Z index</label>
+			<label index="switchableControllerActions1">Producten: Top bekeken producten</label>
+			<label index="switchableControllerActions2">Producten: Samenwerkende Catalogi 4.0 Index Feed</label>
+			<label index="switchableControllerActions9">Product: Tabs</label>
+			<label index="switchableControllerActions10">Product: Detail</label>
+			<label index="switchableControllerActions3">Product: Detail voor een door u gekozen product</label>
+			<label index="switchableControllerActions11">VAC: Detail</label>
+			<label index="switchableControllerActions5">VACs: Top bekeken VACs</label>
+			<label index="switchableControllerActions7">Registratie: Status</label>
+			<label index="switchableControllerActions12">Product: Toon alle gerelateerde uitgebreide thema&#039;s voor het door de bezoeker geselecteerde product</label>
+			<label index="switchableControllerActions13">Product: Detail Scmeta</label>
+
+			<!-- knowledgebase flexform -->
+			<label index="tab_root_title">PDC plugin configuratie</label>
+			<label index="switchableControllerActions">Extensieweergave</label>
+			<label index="show_destinations">Deelcollecties VAC tonen (kies ten minste een bestemming, anders worden geen VACs getoond)</label>
+			<label index="show_only_faq_question">Kennisbank: Toon enkele VAC vraag (ongeacht parameters)</label>
+			<label index="product_use_template">Product: Gebruik deze template voor detailweergave</label>
+			<label index="registration_disabled_for_this_instance">Registratie: registratie voor deze instantie uitschakelen</label>
+			<label index="statistics_disabled_for_this_instance">Statistiekenregistratie voor deze instantie uitschakelen</label>
+			<label index="select_single_product">Product: Kies het te tonende product</label>
+			<label index="product_limit_results_to_this_audience">Product: Toon alleen resultaten voor deze doelgroep</label>
+			<label index="audience_private">Particulier</label>
+			<label index="audience_business">Ondernemer</label>
+			<label index="faq_find_display_match_exact_phrase">Zoeken: Toon optie &quot;Zoek naar complete zin&quot;</label>
+			<label index="faq_find_default_match_exact_phrase">Zoeken: Standaard instelling voor optie &quot;Zoek naar complete zin&quot;</label>
+			<label index="faq_find_display_include_private_results">Zoeken: Toon optie &quot;Particulier&quot;</label>
+			<label index="faq_find_default_include_private_results">Zoeken: Standaard instelling voor optie &quot;Particulier&quot;</label>
+			<label index="faq_find_display_include_business_results">Zoeken: Toon optie &quot;Organisatie / Ondernemer&quot;</label>
+			<label index="faq_find_default_include_business_results">Zoeken: Standaard instelling voor optie &quot;Organisatie / Ondernemer&quot;</label>
+			<label index="faq_find_display_include_remote_products">Zoeken: Toon optie &quot;Waterschap, provincie, rijk&quot;</label>
+			<label index="faq_find_default_include_remote_products">Zoeken: Standaard instelling voor optie &quot;Waterschap, provincie, rijk&quot;</label>
+		</languageKey>
+	</data>
+</T3locallang>
